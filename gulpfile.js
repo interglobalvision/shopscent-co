@@ -29,7 +29,7 @@ function errorNotify(error){
 }
 
 gulp.task('javascript', function() {
-  return gulp.src('lib/js/main.js')
+  return gulp.src('src/js/main.js')
   .pipe(plumber())
   .pipe(sourcemaps.init())
   .pipe(jshint())
@@ -59,14 +59,14 @@ gulp.task('javascript', function() {
 });
 
 gulp.task('javascript-library', function() {
-  return gulp.src('lib/js/library/*.js')
+  return gulp.src('src/js/library/*.js')
   .pipe(concat('library.js.liquid'))
   .pipe(gulp.dest('assets'))
   .pipe(notify({ message: 'Javascript Library task complete' }));
 });
 
 gulp.task('style', function() {
-  return gulp.src('lib/css/site.styl')
+  return gulp.src('src/css/site.styl')
   .pipe(plumber())
   .pipe(stylus({
       use: [
@@ -94,7 +94,7 @@ gulp.task('style', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src('lib/img/*.*')
+  return gulp.src('src/img/*.*')
   .pipe(cache('images'))
   .pipe(imagemin({
     progressive: false
@@ -105,15 +105,15 @@ gulp.task('images', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['lib/js/main.js'], ['javascript']);
-  gulp.watch(['lib/js/library/*.js'], ['javascript-library']);
-  gulp.watch(['lib/css/*.styl', 'css/responsive/*.styl'], ['style']);
-  gulp.watch(['lib/img/**'], ['images']);
+  gulp.watch(['src/js/main.js'], ['javascript']);
+  gulp.watch(['src/js/library/*.js'], ['javascript-library']);
+  gulp.watch(['src/css/*.styl', 'css/responsive/*.styl'], ['style']);
+  gulp.watch(['src/img/**'], ['images']);
 });
 
 gulp.task('shopifywatch', function() {
   return watch('./+(assets|layout|config|templates)/**')
-  .pipe(gulpShopify(config.apiKey, config.apiPassword, config.shopUrl, config.themeId));
+  .pipe(gulpShopify(config.shopify.apiKey, config.shopify.apiPassword, config.shopify.shopUrl, config.shopify.themeId));
 });
 
 gulp.task('default', ['watch', 'shopifywatch']);
