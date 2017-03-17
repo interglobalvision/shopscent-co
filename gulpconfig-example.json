@@ -1,0 +1,8 @@
+{
+  "shopify" {
+    "apiKey": "0000000000000000000000000",
+    "apiPassword": "0000000000000000000000000",
+    "shopUrl": "my-shop.myshopify.com",
+    "themeId": "000000000"
+  }
+}
