@@ -1,38 +1,27 @@
 [
   {
-    "name": "General",
+    "name": "Front page",
     "settings": [
       {
-        "type": "header",
-        "content": "Logo Options"
+        "type":      "radio",
+        "id":        "front_background",
+        "label":     "Select background",
+        "options": [
+          { "value": "image", "label": "Image" },
+          { "value": "video", "label": "Video" }
+        ],
+        "default":   "image"
       },
       {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Background (example)",
-        "default": "#ffffff"
+        "type": "image_picker",
+        "id": "front_background_image",
+        "label": "Background image"
       },
       {
-        "type": "color",
-        "id": "text_color",
-        "label": "Text color (example)",
-        "default": "#cccccc"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_logo",
-        "label": "Use Custom Logo?"
-      },
-      {
-        "type": "image",
-        "id": "logo.png",
-        "label": "Custom Logo",
-        "max-width": 940,
-        "max-height": 300
-      },
-      {
-        "type": "paragraph",
-        "content": "Maximum logo dimensions are 940px wide by 300px high.Your uploaded file will be resized to fit within those constraints.Need a full-width banner? Upload an image with a width of 940px, and a height of 300px or less."
+        "type": "video_url",
+        "id": "front_background_video",
+        "label": "Background video URL",
+        "accept": ["youtube"]
       }
     ]
   }
