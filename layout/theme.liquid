@@ -35,6 +35,25 @@
     {% endfor %}
   </ul>
   {{ content_for_layout }}
+
+  <footer id="footer">
+    <div class="grid-row">
+      <div class="grid-item item-s-12 text-align-center">
+        <h2>CONTACT</h2>
+      </div>
+    </div>
+    <div class="grid-row justify-end">
+      {% if settings.contact.email %}
+      <div class="grid-item item-s-6 item-m-4">
+        <a href="mailto:{{ settings.contact.email }}">{{ settings.contact.email }}</a>
+      </div>
+      {% endif %}
+      <div class="grid-item item-s-6 item-m-4">
+        <a href="https://instagram.com/{{ settings.contact.instagram }}">@{{ settings.contact.instagram }}</a>
+      </div>
+    </div>
+  </footer>
+
   {{ 'library.js'  | asset_url | script_tag }}
   {{ 'main.js'  | asset_url | script_tag }}
 </body>
