@@ -37,19 +37,23 @@
   {{ content_for_layout }}
 
   <footer id="footer">
-    <div class="grid-row">
-      <div class="grid-item item-s-12 text-align-center">
-        <h2>CONTACT</h2>
+    <div class="container">
+      <div class="grid-row">
+        <div class="grid-item item-s-12 text-align-center">
+          <h2>CONTACT</h2>
+        </div>
       </div>
-    </div>
-    <div class="grid-row justify-end">
-      {% if settings.contact.email %}
-      <div class="grid-item item-s-6 item-m-4">
-        <a href="mailto:{{ settings.contact.email }}">{{ settings.contact.email }}</a>
-      </div>
-      {% endif %}
-      <div class="grid-item item-s-6 item-m-4">
-        <a href="https://instagram.com/{{ settings.contact.instagram }}">@{{ settings.contact.instagram }}</a>
+      <div class="grid-row justify-end text-align-right">
+        {% if settings.contact_email %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+        </div>
+        {% endif %}
+        {% if settings.contact_instagram %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
+        </div>
+        {% endif %}
       </div>
     </div>
   </footer>
