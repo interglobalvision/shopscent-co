@@ -1,11 +1,25 @@
 {% assign page = pages.frontpage %}
 {{ page.content }}
 {% assign collection = collections.frontpage %}
-{% for product in collection.products %}
-<h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
-{{ product.description }}
-<hr />
-<img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-{% else %}
-<p>You have no products in your Frontpage collection</p>
-{% endfor %}
+<section id="front-splash" {% if settings.front_background == 'image' %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endif %}>
+  {% if settings.front_background == 'video' %}
+  <iframe class="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?hd=1&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0" frameborder="0" allowfullscreen></iframe>
+  {% endif %}
+</section>
+<section id="front-collection">
+  <div class="container">
+    <div class="grid-row">
+      {% for product in collection.products %}
+      <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
+        <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+        <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
+        <span>{{ product.price | money_without_trailing_zeros }}</span>
+      </div>
+      {% else %}
+      <div class="grid-item item-s-12">
+        <p>You have no products in your Frontpage collection</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
