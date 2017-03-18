@@ -5,12 +5,12 @@
       {
         "type": "text",
         "label": "Email",
-        "id": "email"
+        "id": "contact_email"
       },
       {
         "type": "text",
         "label": "Instagram handle",
-        "id": "instagram"
+        "id": "contact_instagram"
       }
     ]
   }
