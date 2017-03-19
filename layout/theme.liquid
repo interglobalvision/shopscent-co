@@ -47,16 +47,16 @@
     <div class="container">
       <div class="grid-row">
         <div class="grid-item item-s-12 text-align-center">
-          <h2>CONTACT</h2>
+          <h2 class="font-uppercase">Contact</h2>
         </div>
       </div>
       <div class="grid-row justify-end text-align-right">
-        {% if settings.contact_email %}
+        {% if settings.contact_email != blank %}
         <div class="grid-item item-s-6 item-m-4 item-l-3">
           <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
         </div>
         {% endif %}
-        {% if settings.contact_instagram %}
+        {% if settings.contact_instagram != blank %}
         <div class="grid-item item-s-6 item-m-4 item-l-3">
           <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
         </div>
