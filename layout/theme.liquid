@@ -27,15 +27,15 @@
   <header id="header">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
-      <nav class="grid-row">
+      <nav class="grid-row font-uppercase">
         <div class="grid-item item-s-4">
-          <a href="/about">ABOUT</a>
+          <a href="/about">About</a>
         </div>
         <div class="grid-item item-s-4 text-align-center">
-          <a href="/">SHOP</a>
+          <a href="/">Shop</a>
         </div>
         <div class="grid-item item-s-4 text-align-right">
-          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}CART</a>
+          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}Cart</a>
         </div>
       </nav>
     </div>
