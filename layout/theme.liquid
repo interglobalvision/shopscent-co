@@ -27,21 +27,43 @@
   <header id="header">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
-      <nav class="grid-row">
+      <nav class="grid-row font-uppercase">
         <div class="grid-item item-s-4">
-          <a href="/about">ABOUT</a>
+          <a href="/about">About</a>
         </div>
         <div class="grid-item item-s-4 text-align-center">
-          <a href="/">SHOP</a>
+          <a href="/">Shop</a>
         </div>
         <div class="grid-item item-s-4 text-align-right">
-          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}CART</a>
+          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}Cart</a>
         </div>
       </nav>
     </div>
   </header>
 
   {{ content_for_layout }}
+
+  <footer id="footer">
+    <div class="container">
+      <div class="grid-row">
+        <div class="grid-item item-s-12 text-align-center">
+          <h2 class="font-uppercase">Contact</h2>
+        </div>
+      </div>
+      <div class="grid-row justify-end text-align-right">
+        {% if settings.contact_email != blank %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+        </div>
+        {% endif %}
+        {% if settings.contact_instagram != blank %}
+        <div class="grid-item item-s-6 item-m-4 item-l-3">
+          <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </footer>
 
   {{ 'library.js'  | asset_url | script_tag }}
   {{ 'main.js'  | asset_url | script_tag }}

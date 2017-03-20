@@ -24,5 +24,19 @@
         "accept": ["youtube"]
       }
     ]
+  }, {
+    "name": "Contact",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Email",
+        "id": "contact_email"
+      },
+      {
+        "type": "text",
+        "label": "Instagram handle",
+        "id": "contact_instagram"
+      }
+    ]
   }
 ]
