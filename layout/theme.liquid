@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width" />
   {{ content_for_header }}
   {{ 'site.css' | asset_url | stylesheet_tag }}
-  {{ '//http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   <header id="header">
