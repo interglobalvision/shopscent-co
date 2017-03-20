@@ -1,4 +1,3 @@
-
 /*
  * Pick (for jQuery)
  * version: 1.0 (10/07/2010)
