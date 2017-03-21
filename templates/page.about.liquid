@@ -1,0 +1,63 @@
+{% paginate blogs['about'].articles by 4 %}
+<section id="about-blog">
+  <div class="container">
+    <!--Mobile Only-->
+    <div id="blog-mobile" class="grid-row">
+      {% for article in blogs['about'].articles %}
+      <div class="grid-item item-s-12">
+        {{ article.content }}
+      </div>
+      {% endfor %}
+    </div>
+    <!--End Mobile Only-->
+
+    <!--Tablet/Desktop Only-->
+    <div id="blog-desktop" class="grid-row">
+      <div class="grid-item item-s-12 item-m-6">
+        <div id="blog-column-left" class="grid-column">
+          {% for article in blogs['about'].articles %}
+            {% assign mod = forloop.index | modulo: 2 %}
+            {% if mod != 0 %}
+              <div class="blog-item">
+                {{ article.content }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="grid-item item-m-6">
+        <div id="blog-column-right" class="grid-column">
+          {% for article in blogs['about'].articles %}
+            {% assign mod = forloop.index | modulo: 2 %}
+            {% if mod == 0 %}
+              <div class="blog-item">
+                {{ article.content }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!--End Tablet/Desktop Only-->
+  </div>
+</section>
+
+{% if paginate.pages > 1 %}
+<section id="about-pagination">
+  <div class="container">
+    <div class="grid-row">
+      <div class="grid-item item-s-6">
+      {% if paginate.previous.is_link %}
+        <a href="{{ paginate.previous.url }}"><-</a>
+      {% endif %}
+      </div>
+      <div class="grid-item item-s-6 text-align-right">
+      {% if paginate.next.is_link %}
+        <a href="{{ paginate.next.url }}">-></a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endpaginate %}
