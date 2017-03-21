@@ -19,9 +19,7 @@ var gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   swiss = require('kouto-swiss'),
 
-  imagemin = require('gulp-imagemin'),
-
-  gulpShopify = require('gulp-shopify-upload');
+  imagemin = require('gulp-imagemin');
 
 function errorNotify(error){
   notify.onError("Error: <%= error.message %>");
@@ -107,14 +105,9 @@ gulp.task('images', function () {
 gulp.task('watch', function() {
   gulp.watch(['src/js/main.js'], ['javascript']);
   gulp.watch(['src/js/library/*.js'], ['javascript-library']);
-  gulp.watch(['src/css/*.styl', 'css/responsive/*.styl'], ['style']);
+  gulp.watch(['src/css/*.styl', 'src/css/responsive/*.styl'], ['style']);
   gulp.watch(['src/img/**'], ['images']);
 });
 
-gulp.task('shopifywatch', function() {
-  return watch('./+(assets|layout|config|templates|snippets)/**')
-  .pipe(gulpShopify(config.shopify.apiKey, config.shopify.apiPassword, config.shopify.shopUrl, config.shopify.themeId));
-});
-
-gulp.task('default', ['watch', 'shopifywatch']);
+gulp.task('default', ['watch']);
 gulp.task('build', ['images', 'style', 'javascript-library', 'javascript']);
