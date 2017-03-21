@@ -64,7 +64,7 @@ Site.Product = {
 
     $('#related-products').removeClass('u-hidden');
   },
-}
+};
 
 jQuery(document).ready(function () {
   'use strict';
