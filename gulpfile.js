@@ -112,7 +112,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('shopifywatch', function() {
-  return watch('./+(assets|layout|config|templates)/**')
+  return watch('./+(assets|layout|config|templates|snippets)/**')
   .pipe(gulpShopify(config.shopify.apiKey, config.shopify.apiPassword, config.shopify.shopUrl, config.shopify.themeId));
 });
 

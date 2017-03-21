@@ -8,8 +8,9 @@ Tech this uses [thnx]:
 ---
 
 #### Setup
-
+- `brew tap shopify/shopify`
+- `brew install themekit`
 - make `config.yml` and `gulpconfig.json` files
-- `npm install`
+- `yarn install`
 - `gulp build` or `gulp`
 - `theme upload`
