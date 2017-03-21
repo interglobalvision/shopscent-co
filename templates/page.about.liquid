@@ -14,7 +14,7 @@
     <!--Tablet/Desktop Only-->
     <div id="blog-desktop" class="grid-row">
       <div class="grid-item item-s-12 item-m-6">
-        <div class="grid-column">
+        <div id="blog-column-left" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod != 0 %}
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="grid-item item-m-6">
-        <div class="grid-column">
+        <div id="blog-column-right" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod == 0 %}
