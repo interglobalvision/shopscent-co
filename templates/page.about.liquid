@@ -1,8 +1,19 @@
 {% paginate blogs['about'].articles by 4 %}
 <section id="about-blog">
   <div class="container">
-    <div class="grid-row">
-      <div id="blog-left" class="grid-item item-s-12 item-m-6">
+    <!--Mobile Only-->
+    <div id="blog-mobile" class="grid-row">
+      {% for article in blogs['about'].articles %}
+      <div class="grid-item item-s-12">
+        {{ article.content }}
+      </div>
+      {% endfor %}
+    </div>
+    <!--End Mobile Only-->
+
+    <!--Tablet/Desktop Only-->
+    <div id="blog-desktop" class="grid-row">
+      <div class="grid-item item-s-12 item-m-6">
         <div class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
@@ -10,15 +21,11 @@
               <div class="blog-item">
                 {{ article.content }}
               </div>
-            {% else %}
-              <div class="blog-item blog-item-mobile">
-                {{ article.content }}
-              </div>
             {% endif %}
           {% endfor %}
         </div>
       </div>
-      <div id="blog-right" class="grid-item item-m-6">
+      <div class="grid-item item-m-6">
         <div class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
@@ -31,6 +38,7 @@
         </div>
       </div>
     </div>
+    <!--End Tablet/Desktop Only-->
   </div>
 </section>
 

@@ -969,7 +969,7 @@ html,
 .font-size-micro {
   font-size: 10px;
 }
-#blog-right {
+#blog-desktop {
   display: none;
 }
 @media screen and (min-width: 720px) {
@@ -1238,10 +1238,12 @@ html,
   .mobile-only {
     display: none !important;
   }
-  #blog-right {
-    display: initial;
+  #blog-desktop {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
-  .blog-item-mobile {
+  #blog-mobile {
     display: none;
   }
 }
