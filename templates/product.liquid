@@ -43,11 +43,11 @@
         <form action="/cart/add" method="post" enctype="multipart/form-data">
           <select id="product-variant" name="id">
             {% for variant in product.variants %}
-            {% if variant.available == true %}
+              {% if variant.available == true %}
             <option value="{{variant.id}}"> {{ variant.title }} for {{ variant.price | money_with_currency }}</option>
-            {% else %}
+              {% else %}
             <option disabled="disabled"> {{ variant.title }} - sold out!</option>
-            {% endif %}
+              {% endif %}
             {% endfor %}
           </select>
           <input type="submit" name="add" id="add" value="Add to Cart" class="button">
