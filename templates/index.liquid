@@ -1,14 +1,21 @@
 {% assign page = pages.frontpage %}
 {{ page.content }}
-{% assign collection = collections.frontpage %}
+{% assign collection = collections.all %}
+
+{% paginate collection.products by 9 %}
+
+{% if paginate.current_page == 1 %}
 <section id="front-splash" {% if settings.front_background == 'image' %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endif %}>
   {% if settings.front_background == 'video' %}
   <iframe class="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?version=3&amp;hd=1&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0&amp;playlist={{ settings.front_background_video.id }}" frameborder="0" allowfullscreen></iframe>
   {% endif %}
 </section>
-<section id="front-collection">
+{% endif %}
+
+<section id="shop-collection">
   <div class="container">
     <div class="grid-row">
+
       {% for product in collection.products %}
       <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
         <a href="{{ product.url }}">
@@ -19,9 +26,35 @@
       </div>
       {% else %}
       <div class="grid-item item-s-12">
-        <p>You have no products in your Frontpage collection</p>
+        <p>You have no products in your shop</p>
       </div>
       {% endfor %}
+
     </div>
   </div>
 </section>
+
+{% if paginate.pages > 1 %}
+<section id="shop-pagination">
+  <div class="container">
+    <div class="grid-row">
+      <div class="grid-item item-s-6">
+      {% if paginate.previous.is_link %}
+        {% if paginate.current_page == 2 %}
+        <a href="/"><-</a>
+        {% else %}
+        <a href="{{ paginate.previous.url }}"><-</a>
+        {% endif %}
+      {% endif %}
+      </div>
+      <div class="grid-item item-s-6 text-align-right">
+      {% if paginate.next.is_link %}
+        <a href="{{ paginate.next.url }}">-></a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endpaginate %}
