@@ -18,13 +18,13 @@
   <meta name="description" content="{{ page_description }}" />
   {% endif %}
   <link rel="canonical" href="{{ canonical_url }}" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ content_for_header }}
   {{ 'site.css' | asset_url | stylesheet_tag }}
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header">
+  <header id="header" class="font-bold padding-top-basic">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
       <nav class="grid-row font-uppercase">
@@ -35,29 +35,31 @@
           <a href="/">Shop</a>
         </div>
         <div class="grid-item item-s-4 text-align-right">
-          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}Cart</a>
+          <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}Cart</a>
         </div>
       </nav>
     </div>
   </header>
 
-  {{ content_for_layout }}
+  <main id="main-content">
+    {{ content_for_layout }}
+  </main>
 
-  <footer id="footer">
+  <footer id="footer" class="font-bold padding-top-large padding-bottom-mid">
     <div class="container">
       <div class="grid-row">
         <div class="grid-item item-s-12 text-align-center">
-          <h2 class="font-uppercase">Contact</h2>
+          <h2 class="font-uppercase font-size-extra">Contact</h2>
         </div>
       </div>
-      <div class="grid-row justify-end text-align-right">
+      <div id="contact-links" class="grid-row">
         {% if settings.contact_email != blank %}
-        <div class="grid-item item-s-6 item-m-4 item-l-3">
+        <div class="grid-item item-s-12 item-m-4 item-l-3 padding-bottom-micro">
           <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
         </div>
         {% endif %}
         {% if settings.contact_instagram != blank %}
-        <div class="grid-item item-s-6 item-m-4 item-l-3">
+        <div class="grid-item item-s-12 item-m-4 item-l-3 padding-bottom-tiny">
           <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
         </div>
         {% endif %}
