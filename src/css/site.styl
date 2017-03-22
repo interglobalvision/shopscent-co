@@ -58,7 +58,7 @@ img
   top: 0
   left: 0
   z-index: 500
-  
+
 #nav-cart-count
   vertical-align: middle
 
@@ -110,10 +110,10 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-mid = ($gutter * 2)
   $margin-large = ($gutter * 3)
 
-  $font-size-extra = 140px
-  $font-size-large = 110px
+  $font-size-extra = 120px
+  $font-size-large = 80px
   $font-size-mid = 32px
-  $font-size-basic = 26px
+  $font-size-basic = 24px
   $font-size-small = 20px
   $font-size-tiny = 16px
   $font-size-micro = 12px
@@ -161,7 +161,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1280px)
 
-  $font-size-basic = 36px
+  $font-size-basic = 32px
   $font-size-extra = 200px
 
   grid(1200px)
@@ -170,7 +170,11 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1366px)
 
+  $font-size-basic = 36px
+
   grid(1300px)
+
+  font-sizes($font-size-basic)
 
 @media screen and (min-width: 1680px)
 
