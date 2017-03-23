@@ -693,6 +693,9 @@ strong,
 .text-align-center {
   text-align: center;
 }
+.line-tighter {
+  line-height: 1.15;
+}
 a,
 a:active,
 a:visited {
@@ -722,6 +725,13 @@ img {
 }
 #nav-cart-count {
   vertical-align: middle;
+}
+#product-title {
+  display: inline;
+  line-height: 1.15;
+}
+#product-title:after {
+  content: ' ';
 }
 #footer {
   background-color: #000;
@@ -1000,7 +1010,7 @@ html,
   font-size: 40px;
 }
 .font-size-mid {
-  font-size: 32px;
+  font-size: 28px;
 }
 .font-size-small {
   font-size: 16px;
@@ -1010,6 +1020,9 @@ html,
 }
 .font-size-micro {
   font-size: 11px;
+}
+#main-content {
+  margin-top: 74px;
 }
 #blog-desktop {
   display: none;
@@ -1282,19 +1295,19 @@ html,
   }
   html,
   .font-size-basic {
-    font-size: 24px;
+    font-size: 21px;
   }
   .font-size-extra {
     font-size: 120px;
   }
   .font-size-large {
-    font-size: 80px;
+    font-size: 70px;
   }
   .font-size-mid {
     font-size: 32px;
   }
   .font-size-small {
-    font-size: 20px;
+    font-size: 18px;
   }
   .font-size-tiny {
     font-size: 16px;
@@ -1304,6 +1317,9 @@ html,
   }
   .mobile-only {
     display: none !important;
+  }
+  #main-content {
+    margin-top: 95px;
   }
   #blog-desktop {
     display: -webkit-flex;
@@ -1592,6 +1608,39 @@ html,
     font-size: 170px;
   }
   .font-size-large {
+    font-size: 120px;
+  }
+  .font-size-mid {
+    font-size: 36px;
+  }
+  .font-size-small {
+    font-size: 22px;
+  }
+  .font-size-tiny {
+    font-size: 18px;
+  }
+  .font-size-micro {
+    font-size: 13px;
+  }
+  .desktop-only {
+    display: initial !important;
+  }
+  #main-content {
+    margin-top: 109px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1200px;
+  }
+  html,
+  .font-size-basic {
+    font-size: 32px;
+  }
+  .font-size-extra {
+    font-size: 200px;
+  }
+  .font-size-large {
     font-size: 144px;
   }
   .font-size-mid {
@@ -1606,20 +1655,8 @@ html,
   .font-size-micro {
     font-size: 14px;
   }
-  .desktop-only {
-    display: initial !important;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .container {
-    width: 1200px;
-  }
-  html,
-  .font-size-basic {
-    font-size: 32px;
-  }
-  .font-size-extra {
-    font-size: 200px;
+  #main-content {
+    margin-top: 109px;
   }
 }
 @media screen and (min-width: 1366px) {

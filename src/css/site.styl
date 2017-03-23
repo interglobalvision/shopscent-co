@@ -64,6 +64,16 @@ img
 
 // ******************************************************
 
+// PRODUCT
+
+#product-title
+  display: inline
+  line-height: 1.15
+  &:after
+    content: ' '
+
+// ******************************************************
+
 // FOOTER
 
 #footer
@@ -85,7 +95,7 @@ $margin-large = ($gutter * 3)
 
 $font-size-extra = 56px
 $font-size-large = 40px
-$font-size-mid = 32px
+$font-size-mid = 28px
 $font-size-basic = 24px
 $font-size-small = 16px
 $font-size-tiny = 14px
@@ -111,10 +121,10 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-large = ($gutter * 3)
 
   $font-size-extra = 120px
-  $font-size-large = 80px
+  $font-size-large = 70px
   $font-size-mid = 32px
-  $font-size-basic = 24px
-  $font-size-small = 20px
+  $font-size-basic = 21px
+  $font-size-small = 18px
   $font-size-tiny = 16px
   $font-size-micro = 12px
 
@@ -141,12 +151,12 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-large = ($gutter * 3)
 
   $font-size-extra = 170px
-  $font-size-large = 144px
-  $font-size-mid = 40px
+  $font-size-large = 120px
+  $font-size-mid = 36px
   $font-size-basic = 28px
-  $font-size-small = 24px
-  $font-size-tiny = 20px
-  $font-size-micro = 14px
+  $font-size-small = 22px
+  $font-size-tiny = 18px
+  $font-size-micro = 13px
 
   grid(1000px, $gutter, l)
 
@@ -161,12 +171,19 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1280px)
 
-  $font-size-basic = 32px
   $font-size-extra = 200px
+  $font-size-large = 144px
+  $font-size-mid = 40px
+  $font-size-basic = 32px
+  $font-size-small = 24px
+  $font-size-tiny = 20px
+  $font-size-micro = 14px
 
   grid(1200px)
 
-  font-sizes($font-size-basic, $font-size-extra)
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
+
+  @import 'responsive/monitor'
 
 @media screen and (min-width: 1366px)
 

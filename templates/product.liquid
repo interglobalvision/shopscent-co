@@ -1,9 +1,9 @@
 <section id="product-header">
   <div class="container">
     <div class="grid-row">
-      <div class="grid-item item-s-12 item-m-8">
-        <h2 class="u-inline-block">{{ product.title }}</h2>
-        <span>{{ product.price | money_without_trailing_zeros }}</span>
+      <div class="grid-item item-s-12 item-m-8 align-self-center">
+        <a href="{{ product.url }}"><h1 id="product-title" class="font-size-large line-tighter">{{ product.title }}</h2></a>
+        <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
       </div>
       <div class="grid-item item-s-12 item-m-4">
         <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
