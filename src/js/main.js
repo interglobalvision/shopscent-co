@@ -20,7 +20,12 @@ Site = {
     var _this = this;
 
     if ($('#product-gallery').length) {
-      _this.Product.setGalleryWidth();
+
+      // debounce gallery
+      setTimeout(function() {
+        _this.Product.setGalleryDimensions();
+        _this.Product.bindGalleryDrag();
+      }, 500);
     }
   },
 
@@ -41,7 +46,7 @@ Site.Product = {
     var _this = this;
 
     if ($('#product-gallery').length) {
-      _this.setGalleryWidth();
+      _this.setGalleryDimensions();
     }
 
     if ($('#related-products').length) {
@@ -49,14 +54,57 @@ Site.Product = {
     }
   },
 
-  setGalleryWidth: function() {
+  setGalleryDimensions: function() {
+    var _this = this;
     var galleryWidth = 0;
+    var windowWidth = $(window).width();
 
     $('.product-gallery-item').each(function() {
       galleryWidth += $(this).width();
     });
 
     $('#product-gallery-row').width(galleryWidth);
+
+    if (galleryWidth > windowWidth) {
+      var galleryContainerWidth = galleryWidth + (galleryWidth - windowWidth);
+
+      $('#product-gallery')
+        .width(galleryContainerWidth)
+        .css('left', ((windowWidth / 2) - (galleryContainerWidth / 2)) + 'px');
+
+      $('#product-gallery-row').css('transform', 'translateX(' + ((galleryContainerWidth / 2) - (galleryWidth / 2)) + 'px)');
+
+      _this.bindGalleryDrag();
+
+    } else {
+
+      $('#product-gallery')
+        .width(galleryWidth)
+        .css('left', ((windowWidth / 2) - (galleryWidth / 2)) + 'px');
+
+      $('#product-gallery-row').css({
+        'transform': 'translateX(0)',
+        'left' : '0'
+      });
+    }
+
+  },
+
+  bindGalleryDrag: function() {
+    var _this = this;
+    var galleryWidth = $('#product-gallery-row').width();
+    var windowWidth = $(window).width();
+
+    if (galleryWidth > windowWidth) {
+      $('#product-gallery-row').pep({
+        axis: 'x',
+        constrainTo: 'parent',
+        place: false
+      }).css('cursor', 'ew-resize');
+    } else {
+      $.pep.unbind($('#product-gallery-row'));
+      $('#product-gallery-row').css('cursor', 'default');
+    }
   },
 
   pickRelated: function() {

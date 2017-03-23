@@ -72,6 +72,17 @@ img
   &:after
     content: ' '
 
+#product-gallery
+  position: relative
+  overflow: hidden
+
+#product-gallery-row
+  position: absolute
+
+.product-gallery-item, .product-gallery-image
+  pointer-events: none
+  font-size: 0
+
 // ******************************************************
 
 // FOOTER
@@ -96,10 +107,10 @@ $margin-large = ($gutter * 3)
 $font-size-extra = 56px
 $font-size-large = 40px
 $font-size-mid = 28px
-$font-size-basic = 24px
-$font-size-small = 16px
-$font-size-tiny = 14px
-$font-size-micro = 11px
+$font-size-basic = 18px
+$font-size-small = 14px
+$font-size-tiny = 12px
+$font-size-micro = 10px
 
 grid(96%, $gutter, s)
 
@@ -124,8 +135,8 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $font-size-large = 70px
   $font-size-mid = 32px
   $font-size-basic = 21px
-  $font-size-small = 18px
-  $font-size-tiny = 16px
+  $font-size-small = 16px
+  $font-size-tiny = 14px
   $font-size-micro = 12px
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
