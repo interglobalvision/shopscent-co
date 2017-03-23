@@ -716,6 +716,26 @@ img {
 .desktop-only {
   display: none !important;
 }
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #000;
+}
+input:focus,
+select:focus,
+a:focus {
+  outline: none;
+  color: #f00;
+}
+input:focus img,
+select:focus img,
+a:focus img {
+  box-shadow: 0 0 40px -5px #f00;
+}
 #header {
   position: fixed;
   width: 100vw;
@@ -745,6 +765,38 @@ img {
   pointer-events: none;
   font-size: 0;
 }
+#product-tag-list {
+  list-style-type: disc;
+}
+.selector-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.selector-wrapper label {
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.selector-wrapper label:after {
+  content: ': ';
+}
+#add {
+  border: 0;
+  background: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 #footer {
   background-color: #000;
   color: #fff;
@@ -753,7 +805,7 @@ img {
   width: 96%;
 }
 .grid-item {
-  padding: 0 7px;
+  padding: 0 5.5px;
 }
 .grid-item.no-gutter {
   padding-left: 0;
@@ -940,76 +992,76 @@ img {
   max-height: 100%;
 }
 .margin-top-micro {
-  margin-top: 4.666666666666667px;
+  margin-top: 3.666666666666667px;
 }
 .margin-bottom-micro {
-  margin-bottom: 4.666666666666667px;
+  margin-bottom: 3.666666666666667px;
 }
 .padding-top-micro {
-  padding-top: 4.666666666666667px;
+  padding-top: 3.666666666666667px;
 }
 .padding-bottom-micro {
-  padding-bottom: 4.666666666666667px;
+  padding-bottom: 3.666666666666667px;
 }
 .margin-top-tiny {
-  margin-top: 7px;
+  margin-top: 5.5px;
 }
 .margin-bottom-tiny {
-  margin-bottom: 7px;
+  margin-bottom: 5.5px;
 }
 .padding-top-tiny {
-  padding-top: 7px;
+  padding-top: 5.5px;
 }
 .padding-bottom-tiny {
-  padding-bottom: 7px;
+  padding-bottom: 5.5px;
 }
 .margin-top-small {
-  margin-top: 14px;
+  margin-top: 11px;
 }
 .margin-bottom-small {
-  margin-bottom: 14px;
+  margin-bottom: 11px;
 }
 .padding-top-small {
-  padding-top: 14px;
+  padding-top: 11px;
 }
 .padding-bottom-small {
-  padding-bottom: 14px;
+  padding-bottom: 11px;
 }
 .margin-top-basic {
-  margin-top: 21px;
+  margin-top: 16.5px;
 }
 .margin-bottom-basic {
-  margin-bottom: 21px;
+  margin-bottom: 16.5px;
 }
 .padding-top-basic {
-  padding-top: 21px;
+  padding-top: 16.5px;
 }
 .padding-bottom-basic {
-  padding-bottom: 21px;
+  padding-bottom: 16.5px;
 }
 .margin-top-mid {
-  margin-top: 28px;
+  margin-top: 27.5px;
 }
 .margin-bottom-mid {
-  margin-bottom: 28px;
+  margin-bottom: 27.5px;
 }
 .padding-top-mid {
-  padding-top: 28px;
+  padding-top: 27.5px;
 }
 .padding-bottom-mid {
-  padding-bottom: 28px;
+  padding-bottom: 27.5px;
 }
 .margin-top-large {
-  margin-top: 42px;
+  margin-top: 55px;
 }
 .margin-bottom-large {
-  margin-bottom: 42px;
+  margin-bottom: 55px;
 }
 .padding-top-large {
-  padding-top: 42px;
+  padding-top: 55px;
 }
 .padding-bottom-large {
-  padding-bottom: 42px;
+  padding-bottom: 55px;
 }
 html,
 .font-size-basic {
@@ -1041,89 +1093,107 @@ html,
 }
 #product-gallery,
 .product-gallery-image {
-  height: 200px;
+  height: 250px;
+}
+#product-tag-list {
+  padding-left: 16.5px;
+}
+#product-add-holder {
+  font-size: 40px;
+}
+.selector-wrapper {
+  margin-bottom: 11px;
+}
+.selector-wrapper label {
+  margin-right: 11px;
+  font-size: 14px;
+}
+.selector-wrapper select {
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 #contact-links {
   text-align: center;
 }
 @media screen and (min-width: 720px) {
   .margin-top-micro {
-    margin-top: 7px;
+    margin-top: 6px;
   }
   .margin-bottom-micro {
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
   .padding-top-micro {
-    padding-top: 7px;
+    padding-top: 6px;
   }
   .padding-bottom-micro {
-    padding-bottom: 7px;
+    padding-bottom: 6px;
   }
   .margin-top-tiny {
-    margin-top: 10.5px;
+    margin-top: 9px;
   }
   .margin-bottom-tiny {
-    margin-bottom: 10.5px;
+    margin-bottom: 9px;
   }
   .padding-top-tiny {
-    padding-top: 10.5px;
+    padding-top: 9px;
   }
   .padding-bottom-tiny {
-    padding-bottom: 10.5px;
+    padding-bottom: 9px;
   }
   .margin-top-small {
-    margin-top: 21px;
+    margin-top: 18px;
   }
   .margin-bottom-small {
-    margin-bottom: 21px;
+    margin-bottom: 18px;
   }
   .padding-top-small {
-    padding-top: 21px;
+    padding-top: 18px;
   }
   .padding-bottom-small {
-    padding-bottom: 21px;
+    padding-bottom: 18px;
   }
   .margin-top-basic {
-    margin-top: 31.5px;
+    margin-top: 27px;
   }
   .margin-bottom-basic {
-    margin-bottom: 31.5px;
+    margin-bottom: 27px;
   }
   .padding-top-basic {
-    padding-top: 31.5px;
+    padding-top: 27px;
   }
   .padding-bottom-basic {
-    padding-bottom: 31.5px;
+    padding-bottom: 27px;
   }
   .margin-top-mid {
-    margin-top: 42px;
+    margin-top: 45px;
   }
   .margin-bottom-mid {
-    margin-bottom: 42px;
+    margin-bottom: 45px;
   }
   .padding-top-mid {
-    padding-top: 42px;
+    padding-top: 45px;
   }
   .padding-bottom-mid {
-    padding-bottom: 42px;
+    padding-bottom: 45px;
   }
   .margin-top-large {
-    margin-top: 63px;
+    margin-top: 90px;
   }
   .margin-bottom-large {
-    margin-bottom: 63px;
+    margin-bottom: 90px;
   }
   .padding-top-large {
-    padding-top: 63px;
+    padding-top: 90px;
   }
   .padding-bottom-large {
-    padding-bottom: 63px;
+    padding-bottom: 90px;
   }
   .container {
     width: 680px;
   }
   .grid-item {
-    padding: 0 10.5px;
+    padding: 0 9px;
   }
   .grid-item.no-gutter {
     padding-left: 0;
@@ -1348,6 +1418,25 @@ html,
   #product-gallery,
   .product-gallery-image {
     height: 400px;
+  }
+  #product-tag-list {
+    padding-left: 27px;
+  }
+  #product-add-holder {
+    font-size: 21px;
+  }
+  .selector-wrapper {
+    margin-bottom: 18px;
+  }
+  .selector-wrapper label {
+    margin-right: 18px;
+    font-size: 16px;
+  }
+  .selector-wrapper select {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    padding-bottom: 2px;
   }
   #contact-links {
     text-align: right;
@@ -1597,28 +1686,28 @@ html,
     padding-bottom: 36px;
   }
   .margin-top-mid {
-    margin-top: 48px;
+    margin-top: 60px;
   }
   .margin-bottom-mid {
-    margin-bottom: 48px;
+    margin-bottom: 60px;
   }
   .padding-top-mid {
-    padding-top: 48px;
+    padding-top: 60px;
   }
   .padding-bottom-mid {
-    padding-bottom: 48px;
+    padding-bottom: 60px;
   }
   .margin-top-large {
-    margin-top: 72px;
+    margin-top: 120px;
   }
   .margin-bottom-large {
-    margin-bottom: 72px;
+    margin-bottom: 120px;
   }
   .padding-top-large {
-    padding-top: 72px;
+    padding-top: 120px;
   }
   .padding-bottom-large {
-    padding-bottom: 72px;
+    padding-bottom: 120px;
   }
   html,
   .font-size-basic {
@@ -1651,6 +1740,23 @@ html,
   #product-gallery,
   .product-gallery-image {
     height: 500px;
+  }
+  #product-tag-list {
+    padding-left: 36px;
+  }
+  #product-add-holder {
+    font-size: 28px;
+  }
+  .selector-wrapper {
+    margin-bottom: 24px;
+  }
+  .selector-wrapper label {
+    margin-right: 24px;
+    font-size: 22px;
+  }
+  .selector-wrapper select {
+    padding-bottom: 3px;
+    border-bottom-width: 3px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -1686,6 +1792,15 @@ html,
   .product-gallery-image {
     height: 600px;
   }
+  #product-add-holder {
+    font-size: 32px;
+  }
+  .selector-wrapper label {
+    font-size: 24px;
+  }
+  .selector-wrapper select {
+    padding-bottom: 4px;
+  }
 }
 @media screen and (min-width: 1366px) {
   .container {
@@ -1693,6 +1808,16 @@ html,
   }
   html,
   .font-size-basic {
+    font-size: 36px;
+  }
+  #main-content {
+    margin-top: 120px;
+  }
+  #product-gallery,
+  .product-gallery-image {
+    height: 700px;
+  }
+  #product-add-holder {
     font-size: 36px;
   }
 }

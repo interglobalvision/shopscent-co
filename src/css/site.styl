@@ -29,6 +29,7 @@ normalize()
 
 $color-black = rgb(0, 0, 0)
 $color-white = rgb(255, 255, 255)
+$color-red = rgb(255, 0, 0)
 
 // ******************************************************
 
@@ -47,6 +48,24 @@ img
 
 .desktop-only
   display: none !important
+
+// ******************************************************
+
+// FORM
+
+select
+  appearance: none
+  background: none
+  border: 0
+  border-radius: 0
+  border-bottom: 2px solid $color-black
+
+input, select, a
+  &:focus
+    outline: none
+    color: $color-red
+    img
+      box-shadow: 0 0 40px -5px $color-red
 
 // ******************************************************
 
@@ -83,6 +102,27 @@ img
   pointer-events: none
   font-size: 0
 
+#product-tag-list
+  list-style-type: disc
+
+.selector-wrapper
+  display: flex
+  flex-direction: row
+  align-items: center
+  label
+    flex: 0 1 auto
+    font-weight: bold
+    text-transform: uppercase
+    &:after
+      content: ': '
+
+#add
+  border: 0
+  background: none
+  font-weight: bold
+  text-transform: uppercase
+  cursor: pointer
+
 // ******************************************************
 
 // FOOTER
@@ -95,14 +135,14 @@ img
 
 // MEDIA QUERIES
 
-$gutter = 14px
+$gutter = 11px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
 $margin-small = ($gutter)
 $margin-basic = ($gutter * 1.5)
-$margin-mid = ($gutter * 2)
-$margin-large = ($gutter * 3)
+$margin-mid = ($gutter * 2.5)
+$margin-large = ($gutter * 5)
 
 $font-size-extra = 56px
 $font-size-large = 40px
@@ -122,14 +162,14 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 720px)
 
-  $gutter = 21px
+  $gutter = 18px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
   $margin-small = ($gutter)
   $margin-basic = ($gutter * 1.5)
-  $margin-mid = ($gutter * 2)
-  $margin-large = ($gutter * 3)
+  $margin-mid = ($gutter * 2.5)
+  $margin-large = ($gutter * 5)
 
   $font-size-extra = 120px
   $font-size-large = 70px
@@ -158,8 +198,8 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-tiny = ($gutter / 2)
   $margin-small = ($gutter)
   $margin-basic = ($gutter * 1.5)
-  $margin-mid = ($gutter * 2)
-  $margin-large = ($gutter * 3)
+  $margin-mid = ($gutter * 2.5)
+  $margin-large = ($gutter * 5)
 
   $font-size-extra = 170px
   $font-size-large = 120px
@@ -203,3 +243,5 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   grid(1300px)
 
   font-sizes($font-size-basic)
+
+  @import 'responsive/hd'
