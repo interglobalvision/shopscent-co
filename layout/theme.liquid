@@ -24,8 +24,12 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 </head>
+{% assign isIndex = false %}
+{% if template == "index" and current_page == 1 %}
+{% assign isIndex = true %}
+{% endif %}
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header" class="font-bold padding-top-basic">
+  <header id="header" class="font-bold padding-top-basic {% if isIndex %}index-header{% endif %}">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
       <nav class="grid-row font-uppercase">
@@ -33,7 +37,7 @@
           <a href="/pages/about">About</a>
         </div>
         <div class="grid-item item-s-4 text-align-center">
-          <a href="/">Shop</a>
+          <a href="/{% unless isIndex %}?s{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
         </div>
         <div class="grid-item item-s-4 text-align-right">
           <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}Cart</a>
@@ -42,7 +46,7 @@
     </div>
   </header>
 
-  <main id="main-content" class="margin-bottom-basic">
+  <main id="main-content" class="margin-bottom-basic {% if isIndex %}index-content{% endif %}">
     {{ content_for_layout }}
   </main>
 
