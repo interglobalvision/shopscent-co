@@ -2,12 +2,12 @@
 {{ page.content }}
 {% assign collection = collections.all %}
 
-{% paginate collection.products by 9 %}
+{% paginate collection.products by 6 %}
 
 {% if paginate.current_page == 1 %}
 <section id="front-splash" {% if settings.front_background == 'image' %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endif %}>
   {% if settings.front_background == 'video' %}
-  <iframe class="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?version=3&amp;hd=1&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0&amp;playlist={{ settings.front_background_video.id }}" frameborder="0" allowfullscreen></iframe>
+  <iframe id="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?version=3&amp;hd=1&amp;vd=hd720&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0&amp;playlist={{ settings.front_background_video.id }}" frameborder="0" allowfullscreen></iframe>
   {% endif %}
 </section>
 {% endif %}
@@ -18,8 +18,8 @@
 
       {% for product in collection.products %}
       <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+        <a href="{{ product.url }}" class="font-size-small">
+          <img class="js-tilt" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
           <h2>{{ product.title }}</h2>
           <span>{{ product.price | money_without_trailing_zeros }}</span>
         </a>
@@ -35,21 +35,25 @@
 </section>
 
 {% if paginate.pages > 1 %}
-<section id="shop-pagination">
+<section id="shop-pagination" class="margin-top-large">
   <div class="container">
     <div class="grid-row">
       <div class="grid-item item-s-6">
       {% if paginate.previous.is_link %}
         {% if paginate.current_page == 2 %}
-        <a href="/"><-</a>
+        <a href="/#shop">
         {% else %}
-        <a href="{{ paginate.previous.url }}"><-</a>
+        <a href="{{ paginate.previous.url }}">
         {% endif %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><title>arrow-left</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M23.06,54,56.81,87.75l-8.72,8.44L0,48.09,48.09,0l8.44,8.44L23.06,42.19H96.19V54Z"/></g></g></svg>
+        </a>
       {% endif %}
       </div>
       <div class="grid-item item-s-6 text-align-right">
       {% if paginate.next.is_link %}
-        <a href="{{ paginate.next.url }}">-></a>
+        <a href="{{ paginate.next.url }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><title>arrow-right</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M0,54V42.19H73.13L39.66,8.44,48.09,0,96.19,48.09,48.09,96.19l-8.72-8.44L73.13,54Z"/></g></g></svg>
+        </a>
       {% endif %}
       </div>
     </div>
