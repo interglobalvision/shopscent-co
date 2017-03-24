@@ -56,7 +56,7 @@ Site.Index = {
   init: function() {
     var _this = this;
 
-    if (window.location.href.indexOf('?s') != -1) {
+    if (window.location.href.indexOf('#shop') != -1) {
       history.replaceState({}, document.title, '/');
 
       setTimeout(function(){

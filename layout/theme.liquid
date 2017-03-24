@@ -37,7 +37,7 @@
           <a href="/pages/about">About</a>
         </div>
         <div class="grid-item item-s-4 text-align-center">
-          <a href="/{% unless isIndex %}?s{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
+          <a href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
         </div>
         <div class="grid-item item-s-4 text-align-right">
           <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}Cart</a>
