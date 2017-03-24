@@ -5,8 +5,24 @@ $header-height = 74px
 // BASIC
 
 #main-content
+  min-height: calc('100vh - ' + $header-height)
   margin-top: $header-height
 
+// ******************************************************
+
+// INDEX
+
+#header
+  &.index-header
+    top: calc('100vh - ' + ($margin-basic * 3))
+
+#main-content
+  &.index-content
+    margin-top: calc('100vh + ' + $header-height)
+
+svg.pagination-arrow
+  width: 60px
+  
 // ******************************************************
 
 // ABOUT
