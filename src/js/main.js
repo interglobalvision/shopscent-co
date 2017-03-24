@@ -1,5 +1,5 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global jQuery, $, document, Site, Modernizr */
+/* global jQuery, $, document, Site, Modernizr, Shopify */
 
 Site = {
   mobileThreshold: 601,
@@ -45,7 +45,9 @@ Site.Product = {
     var _this = this;
 
     if ($('#product-gallery').length) {
-      _this.setGalleryDimensions();
+      $('#product-gallery').imagesLoaded( function() {
+        _this.setGalleryDimensions();
+      });
     }
 
     if ($('#product-select').length) {
@@ -110,13 +112,14 @@ Site.Product = {
   },
 
   selectCallback: function(variant, selector) {
-    if (variant && variant.available == true) {
-      $('#add').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+    if (variant && variant.available === true) {
+      $('#product-add-holder').removeClass('out-of-stock');
+      $('#add').removeAttr('disabled');
     }
     else {
       // variant doesn't exist
-      $('#add').addClass('disabled').attr('disabled', 'disabled');
-      // set add-to-cart button to unavailable class and disable button
+      $('#product-add-holder').addClass('out-of-stock')
+      $('#add').attr('disabled', 'disabled');
     }
   },
 
