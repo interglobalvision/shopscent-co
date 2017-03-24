@@ -39,6 +39,9 @@ html
   background-color: $color-white
   color: $color-black
 
+body
+  overflow-x: hidden
+
 img
   max-width: 100%
   height: auto
@@ -49,23 +52,24 @@ img
 .desktop-only
   display: none !important
 
-// ******************************************************
-
-// FORM
-
-select
-  appearance: none
-  background: none
-  border: 0
-  border-radius: 0
-  border-bottom: 2px solid $color-black
-
 input, select, a
   &:focus
     outline: none
     color: $color-red
     img
       box-shadow: 0 0 40px -5px $color-red
+
+// ******************************************************
+
+// FORM
+
+input, select
+  appearance: none
+  background: none
+  border: 0
+  border-radius: 0
+  border-bottom: 2px solid $color-black
+  padding: 0
 
 // ******************************************************
 
@@ -97,6 +101,7 @@ input, select, a
 
 #product-gallery-row
   position: absolute
+  width: 100vw
 
 .product-gallery-item, .product-gallery-image
   pointer-events: none
@@ -116,12 +121,22 @@ input, select, a
     &:after
       content: ': '
 
+#product-unavailable
+  display: none
+
+#product-add-holder
+  &.out-of-stock
+    #product-unavailable
+      display: block
+
 #add
   border: 0
   background: none
   font-weight: bold
   text-transform: uppercase
   cursor: pointer
+  &:disabled
+    cursor: default
 
 // ******************************************************
 
@@ -135,7 +150,7 @@ input, select, a
 
 // MEDIA QUERIES
 
-$gutter = 11px
+$gutter = 14px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
