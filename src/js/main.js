@@ -3,6 +3,7 @@
 
 Site = {
   mobileThreshold: 601,
+  timer: null,
   init: function() {
     var _this = this;
 
@@ -20,10 +21,13 @@ Site = {
     var _this = this;
 
     if ($('#product-gallery').length) {
-
       // debounce gallery
-      setTimeout(function() {
+      clearTimeout(_this.timer);
+
+      _this.timer = setTimeout(function () {
         _this.Product.setGalleryDimensions();
+        clearTimeout(_this.timer);
+        _this.timer = null;
       }, 1000);
     }
   },
@@ -64,7 +68,7 @@ Site.Product = {
     var galleryWidth = 0;
     var windowWidth = $(window).width();
 
-    $.each($('.product-gallery-item'), function() {
+    $('.product-gallery-item').each(function() {
       galleryWidth += $(this).width();
     });
 
@@ -118,7 +122,7 @@ Site.Product = {
     }
     else {
       // variant doesn't exist
-      $('#product-add-holder').addClass('out-of-stock')
+      $('#product-add-holder').addClass('out-of-stock');
       $('#add').attr('disabled', 'disabled');
     }
   },
