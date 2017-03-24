@@ -57,18 +57,25 @@ Site.Index = {
     var _this = this;
 
     if (window.location.href.indexOf('#shop') != -1) {
+      // url has #shop
+
+      // remove #shop from url in address bar
       history.replaceState({}, document.title, '/');
 
+      // scrollto shop after 300ms
       setTimeout(function(){
         _this.scrollToShop();
       }, 300);
     }
 
     if ($('#header').hasClass('index-header')) {
+      // bind stickyheader and scrollto shop
       _this.bindSticky();
       _this.bindScroll();
     }
 
+    // if youtube video in splash, detect autoplay
+    // if mobile browser detected, remove youtube video
     if ($('#front-video').length) {
       detectAutoplay(100, function() {
         $('#front-video').remove();
@@ -81,10 +88,12 @@ Site.Index = {
     var headerTop = $('#header').offset().top;
 
     $(window).on('scroll', function() {
+      // stick header
       if ($(this).scrollTop() >= headerTop){
         $('#header').removeClass('index-header');
       }
 
+      // unstick header
       if ($(this).scrollTop() < headerTop){
         $('#header').addClass('index-header');
       }
@@ -95,10 +104,13 @@ Site.Index = {
     var _this = this;
     var shopTop = $('#front-splash').height();
 
+    // Shop nav link clicked on index page
     $('.js-scroll-to-shop').on('click', function(event){
       event.preventDefault();
 
       _this.scrollToShop();
+
+      // unfocus Shop nav link
       $(this).trigger('blur');
     });
   },
