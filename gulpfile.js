@@ -35,12 +35,12 @@ gulp.task('javascript', function() {
   .on('error', errorNotify)
   .pipe(jscs('.jscsrc'))
   .on('error', errorNotify)
-  .pipe(uglify())
-  .on('error', errorNotify)
   .pipe(rename({
     extname: '.js.liquid'
   }))
   .pipe(gulp.dest('assets'))
+  .pipe(uglify())
+  .on('error', errorNotify)
   .pipe(rename({
     basename: 'main',
     suffix: '.min',
