@@ -21,14 +21,14 @@ Site = {
     var _this = this;
 
     if ($('#product-gallery').length) {
-      // debounce resize event for product gallery 
+      // debounce resize event for product gallery
       clearTimeout(_this.debounceTimer);
 
       _this.debounceTimer = setTimeout(function () {
         _this.Product.setGalleryDimensions();
         clearTimeout(_this.debounceTimer);
         _this.debounceTimer = null;
-      }, 1000);
+      }, 100);
     }
   },
 
@@ -73,6 +73,8 @@ Site.Product = {
       // using getBoundingClientRect because jQuery width() rounds values
       galleryWidth += $(this)[0].getBoundingClientRect().width;
     });
+
+    $('#product-gallery-row').css('transition', 'none');
 
     //  set gallery width to width of gallery items
     $('#product-gallery-row').width(galleryWidth);
