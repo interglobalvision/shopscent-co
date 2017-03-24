@@ -29,6 +29,7 @@ normalize()
 
 $color-black = rgb(0, 0, 0)
 $color-white = rgb(255, 255, 255)
+$color-red = rgb(255, 0, 0)
 
 // ******************************************************
 
@@ -37,6 +38,9 @@ $color-white = rgb(255, 255, 255)
 html
   background-color: $color-white
   color: $color-black
+
+body
+  overflow-x: hidden
 
 img
   max-width: 100%
@@ -47,6 +51,25 @@ img
 
 .desktop-only
   display: none !important
+
+input, select, a
+  &:focus
+    outline: none
+    color: $color-red
+    img
+      box-shadow: 0 0 40px -5px $color-red
+
+// ******************************************************
+
+// FORM
+
+input, select
+  appearance: none
+  background: none
+  border: 0
+  border-radius: 0
+  border-bottom: 2px solid $color-black
+  padding: 0
 
 // ******************************************************
 
@@ -61,6 +84,59 @@ img
 
 #nav-cart-count
   vertical-align: middle
+
+// ******************************************************
+
+// PRODUCT
+
+#product-title
+  display: inline
+  line-height: 1.15
+  &:after
+    content: ' '
+
+#product-gallery
+  position: relative
+  overflow: hidden
+
+#product-gallery-row
+  position: absolute
+  width: 100vw
+
+.product-gallery-item, .product-gallery-image
+  pointer-events: none
+  font-size: 0
+
+#product-tag-list
+  list-style-type: disc
+
+.selector-wrapper
+  display: flex
+  flex-direction: row
+  align-items: center
+  label
+    flex: 0 1 auto
+    font-weight: bold
+    text-transform: uppercase
+    &:after
+      content: ': '
+
+#product-unavailable
+  display: none
+
+#product-add-holder
+  &.out-of-stock
+    #product-unavailable
+      display: block
+
+#add
+  border: 0
+  background: none
+  font-weight: bold
+  text-transform: uppercase
+  cursor: pointer
+  &:disabled
+    cursor: default
 
 // ******************************************************
 
@@ -80,16 +156,16 @@ $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
 $margin-small = ($gutter)
 $margin-basic = ($gutter * 1.5)
-$margin-mid = ($gutter * 2)
-$margin-large = ($gutter * 3)
+$margin-mid = ($gutter * 2.5)
+$margin-large = ($gutter * 5)
 
 $font-size-extra = 56px
 $font-size-large = 40px
-$font-size-mid = 32px
-$font-size-basic = 24px
-$font-size-small = 16px
-$font-size-tiny = 14px
-$font-size-micro = 11px
+$font-size-mid = 28px
+$font-size-basic = 18px
+$font-size-small = 14px
+$font-size-tiny = 12px
+$font-size-micro = 10px
 
 grid(96%, $gutter, s)
 
@@ -101,21 +177,21 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 720px)
 
-  $gutter = 21px
+  $gutter = 18px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
   $margin-small = ($gutter)
   $margin-basic = ($gutter * 1.5)
-  $margin-mid = ($gutter * 2)
-  $margin-large = ($gutter * 3)
+  $margin-mid = ($gutter * 2.5)
+  $margin-large = ($gutter * 5)
 
   $font-size-extra = 120px
-  $font-size-large = 80px
+  $font-size-large = 70px
   $font-size-mid = 32px
-  $font-size-basic = 24px
-  $font-size-small = 20px
-  $font-size-tiny = 16px
+  $font-size-basic = 21px
+  $font-size-small = 16px
+  $font-size-tiny = 14px
   $font-size-micro = 12px
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
@@ -137,16 +213,16 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-tiny = ($gutter / 2)
   $margin-small = ($gutter)
   $margin-basic = ($gutter * 1.5)
-  $margin-mid = ($gutter * 2)
-  $margin-large = ($gutter * 3)
+  $margin-mid = ($gutter * 2.5)
+  $margin-large = ($gutter * 5)
 
   $font-size-extra = 170px
-  $font-size-large = 144px
-  $font-size-mid = 40px
+  $font-size-large = 120px
+  $font-size-mid = 36px
   $font-size-basic = 28px
-  $font-size-small = 24px
-  $font-size-tiny = 20px
-  $font-size-micro = 14px
+  $font-size-small = 22px
+  $font-size-tiny = 18px
+  $font-size-micro = 13px
 
   grid(1000px, $gutter, l)
 
@@ -161,12 +237,19 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1280px)
 
-  $font-size-basic = 32px
   $font-size-extra = 200px
+  $font-size-large = 144px
+  $font-size-mid = 40px
+  $font-size-basic = 32px
+  $font-size-small = 24px
+  $font-size-tiny = 20px
+  $font-size-micro = 14px
 
   grid(1200px)
 
-  font-sizes($font-size-basic, $font-size-extra)
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
+
+  @import 'responsive/monitor'
 
 @media screen and (min-width: 1366px)
 
@@ -175,3 +258,5 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   grid(1300px)
 
   font-sizes($font-size-basic)
+
+  @import 'responsive/hd'

@@ -1,9 +1,9 @@
-<section id="product-header">
+<section id="product-header" class="margin-bottom-basic">
   <div class="container">
-    <div class="grid-row">
+    <div class="grid-row align-items-center">
       <div class="grid-item item-s-12 item-m-8">
-        <h2 class="u-inline-block">{{ product.title }}</h2>
-        <span>{{ product.price | money_without_trailing_zeros }}</span>
+        <h1 id="product-title" class="font-size-large line-tighter">{{ product.title }}</h1>
+        <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
       </div>
       <div class="grid-item item-s-12 item-m-4">
         <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
@@ -13,12 +13,12 @@
 </section>
 
 {% if product.images.size > 1 %}
-<section id="product-gallery">
+<section id="product-gallery" class="margin-bottom-basic">
   <div id="product-gallery-row" class="grid-row">
     {% for image in product.images %}
       {% unless image == product.featured_image %}
       <div class="product-gallery-item grid-item no-gutter">
-        <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+        <img class="product-gallery-image" src="{{ image.src | img_url: 'x700' }}" alt="{{ image.alt | escape }}">
       </div>
       {% endunless %}
     {% endfor %}
@@ -26,31 +26,39 @@
 </section>
 {% endif %}
 
-<section id="product-info">
+<section id="product-info" class="margin-bottom-large" data-product='{{ product | json }}'>
   <div class="container">
     <div class="grid-row">
-      <div class="grid-item item-s-12 item-m-6">
+      <div class="grid-item item-s-12 item-m-6 margin-bottom-basic">
         {{ product.description }}
       </div>
-      <div class="grid-item item-s-12 item-m-3">
-        <ul>
+      <div class="grid-item item-s-6 item-m-3 item-l-3 margin-bottom-basic">
+        <ul id="product-tag-list">
         {% for tag in product.tags %}
           <li class="product-tag">{{ tag }}</li>
         {% endfor %}
         </ul>
       </div>
-      <div class="grid-item item-s-12 item-m-3">
-        <form action="/cart/add" method="post" enctype="multipart/form-data">
-          <select id="product-variant" name="id">
+      <div class="grid-item item-s-6 item-m-3 item-l-3">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="product-form">
+          {% if product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+          {% else %}
+            <select id="product-select" name="id" class="margin-bottom-basic">
             {% for variant in product.variants %}
               {% if variant.available == true %}
-            <option value="{{variant.id}}"> {{ variant.title }} for {{ variant.price | money_with_currency }}</option>
+              <option value="{{variant.id}}"> {{ variant.title }}</option>
               {% else %}
-            <option disabled="disabled"> {{ variant.title }} - sold out!</option>
+              <option disabled="disabled"> {{ variant.title }} - sold out!</option>
               {% endif %}
             {% endfor %}
-          </select>
-          <input type="submit" name="add" id="add" value="Add to Cart" class="button">
+            </select>
+          {% endif %}
+
+          <div id="product-add-holder" class="font-size-basic">
+            <input type="submit" name="add" id="add" value="Add to Cart" class="button">
+            <div id="product-unavailable" class="font-size-small">Out of stock</div>
+          </div>
         </form>
       </div>
     </div>
