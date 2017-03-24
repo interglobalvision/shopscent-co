@@ -3,7 +3,7 @@
 
 Site = {
   mobileThreshold: 601,
-  timer: null,
+  debounceTimer: null,
   init: function() {
     var _this = this;
 
@@ -22,12 +22,12 @@ Site = {
 
     if ($('#product-gallery').length) {
       // debounce gallery
-      clearTimeout(_this.timer);
+      clearTimeout(_this.debounceTimer);
 
-      _this.timer = setTimeout(function () {
+      _this.debounceTimer = setTimeout(function () {
         _this.Product.setGalleryDimensions();
-        clearTimeout(_this.timer);
-        _this.timer = null;
+        clearTimeout(_this.debounceTimer);
+        _this.debounceTimer = null;
       }, 1000);
     }
   },
