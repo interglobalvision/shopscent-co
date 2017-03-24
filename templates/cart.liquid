@@ -33,9 +33,15 @@
     </div>
 
     <div class="grid-row">
-      <div class="grid-item item-s-12 item-m-6"><textarea id="cart-note" placeholder="Order notes...">{{ cart.note }}</textarea></div>
-      <div class="grid-item item-s-6 item-m-3"><input class="button" type="submit" id="update-cart" name="update" value="Update"  /></div>
-      <div class="grid-item item-s-6 item-m-3 text-align-right"><input class="button" type="submit" name="checkout" value="Checkout" /></div>
+      <div class="grid-item item-s-12 item-m-6">
+        <textarea id="cart-note" placeholder="Order notes...">{{ cart.note }}</textarea>
+      </div>
+      <div class="grid-item item-s-6 item-m-3">
+        <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
+      </div>
+      <div class="grid-item item-s-6 item-m-3 text-align-right">
+        <input class="button" type="submit" name="checkout" value="Checkout" />
+      </div>
     </div>
   </form>
 {% else %}
