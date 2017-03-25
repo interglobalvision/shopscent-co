@@ -28,6 +28,11 @@ Site = {
   onResize: function() {
     var _this = this;
 
+    if ($('#header').hasClass('index-header')) {
+      // reset header offset top on resize
+      _this.Index.getHeaderTop();
+    }
+
     if ($('#product-gallery').length) {
       // debounce resize event for product gallery
       clearTimeout(_this.debounceTimer);
@@ -77,26 +82,33 @@ Site.Index = {
     // if youtube video in splash, detect autoplay
     // if mobile browser detected, remove youtube video
     if ($('#front-video').length) {
-      detectAutoplay(1000, function() {
+      detectAutoplay(2000, function() {
         $('#front-video').remove();
       });
     }
   },
 
+  getHeaderTop: function() {
+    var _this = this;
+
+    _this.headerTop = $('#header').offset().top;
+  },
+
   bindSticky: function() {
     var _this = this;
-    var headerTop = $('#header').offset().top;
+
+    _this.getHeaderTop();
 
     $(window).on('scroll', function() {
       var scrollPos = $(this).scrollTop();
 
       // stick header
-      if (scrollPos >= headerTop){
+      if (scrollPos >= _this.headerTop){
         $('#header').removeClass('index-header');
       }
 
       // unstick header
-      if (scrollPos < headerTop){
+      if (scrollPos < _this.headerTop){
         $('#header').addClass('index-header');
       }
     });
