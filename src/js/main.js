@@ -4,6 +4,7 @@
 Site = {
   mobileThreshold: 601,
   debounceTimer: null,
+  isIndex: $('.index-header').length,
   init: function() {
     var _this = this;
 
@@ -28,7 +29,7 @@ Site = {
   onResize: function() {
     var _this = this;
 
-    if ($('.index-header').length) {
+    if (_this.isIndex) {
       // reset header offset top and sticky state on resize
       _this.Index.getHeaderTop();
     }
