@@ -816,6 +816,31 @@ select {
   background-color: #000;
   color: #fff;
 }
+#doodle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 900;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+}
+#doodle svg {
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  top: 5vh;
+  left: 5vw;
+}
+#doodle svg path,
+#doodle svg polyline {
+  fill: none;
+  stroke: #fff;
+}
 .container {
   width: 96%;
 }
