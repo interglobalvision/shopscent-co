@@ -4,7 +4,7 @@
 Site = {
   mobileThreshold: 601,
   debounceTimer: null,
-  isIndex: $('.index-header').length,
+  isIndex: $('.index-content').length,
   init: function() {
     var _this = this;
 
