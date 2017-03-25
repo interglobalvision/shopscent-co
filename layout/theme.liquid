@@ -29,7 +29,7 @@
 {% assign isIndex = true %}
 {% endif %}
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header" class="font-bold padding-top-basic {% if isIndex %}index-header{% endif %}">
+  <header id="header" class="font-bold padding-top-basic padding-bottom-basic {% if isIndex %}index-header{% endif %}">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
       <nav class="grid-row font-uppercase">
