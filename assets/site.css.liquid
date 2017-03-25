@@ -751,7 +751,6 @@ select {
   top: 0;
   left: 0;
   z-index: 500;
-  transition: color 300ms;
 }
 #nav-cart-count {
   vertical-align: middle;
@@ -759,6 +758,8 @@ select {
 #header.index-header {
   position: absolute;
   color: #fff;
+  transition: color 300ms;
+  will-change: color, top;
 }
 #front-splash {
   position: absolute;
@@ -771,6 +772,7 @@ select {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  pointer-events: none;
 }
 #front-splash iframe {
   position: absolute;
@@ -789,6 +791,17 @@ select {
 #front-video {
   height: 100vh;
   width: calc((100vh / 9) * 16);
+}
+#front-logo-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#front-logo {
+  -webkit-filter: drop-shadow(0 0 100px #fff);
+          filter: drop-shadow(0 0 100px #fff);
 }
 #product-title {
   display: inline;

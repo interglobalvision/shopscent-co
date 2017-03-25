@@ -85,7 +85,7 @@ input, select
   top: 0
   left: 0
   z-index: 500
-  transition: color 300ms
+
 
 #nav-cart-count
   vertical-align: middle
@@ -98,6 +98,8 @@ input, select
   &.index-header
     position: absolute
     color: $color-white
+    transition: color 300ms
+    will-change: color, top
 
 #front-splash
   position: absolute
@@ -110,6 +112,7 @@ input, select
   background-size: cover
   background-position: center
   background-repeat: no-repeat
+  pointer-events: none
   iframe
     position: absolute
     top: 50%
@@ -125,6 +128,16 @@ input, select
 #front-video
   height: 100vh
   width: calc('(100vh / 9) * 16')
+
+#front-logo-holder
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+
+#front-logo
+  filter: drop-shadow(0 0 100px $color-white)
 
 // ******************************************************
 
