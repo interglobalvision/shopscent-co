@@ -178,7 +178,7 @@ Site.Doodle = {
     _this.keyframe = 1;
 
     // stretch doodle to fit viewport
-    $('#doodle svg').attr('preserveAspectRatio', 'none');
+    $('#doodle svg')[0].setAttribute('preserveAspectRatio', 'none');
 
     // run drawPath animation on each path or polyline elem
     $('#doodle svg path, #doodle svg polyline').each(function() {
