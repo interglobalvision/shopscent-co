@@ -7,7 +7,7 @@
 {% if paginate.current_page == 1 %}
 <section id="front-splash" {% unless settings.front_background_image == blank %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endunless %}>
   {% if settings.front_background == 'video' %}
-  <iframe id="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?version=3&amp;hd=1&amp;vd=hd720&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0&amp;playlist={{ settings.front_background_video.id }}" frameborder="0" allowfullscreen></iframe>
+  <iframe id="front-video" width="1280" height="720" src="https://www.youtube.com/embed/{{ settings.front_background_video.id }}?version=3&amp;hd=1&amp;iv_load_policy=3&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0" frameborder="0" allowfullscreen></iframe>
   {% endif %}
 
   <div id="front-logo-holder" class="grid-row justify-center align-items-center">
