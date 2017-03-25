@@ -88,13 +88,15 @@ Site.Index = {
     var headerTop = $('#header').offset().top;
 
     $(window).on('scroll', function() {
+      var scrollPos = $(this).scrollTop();
+
       // stick header
-      if ($(this).scrollTop() >= headerTop){
+      if (scrollPos >= headerTop){
         $('#header').removeClass('index-header');
       }
 
       // unstick header
-      if ($(this).scrollTop() < headerTop){
+      if (scrollPos < headerTop){
         $('#header').addClass('index-header');
       }
     });
@@ -102,7 +104,6 @@ Site.Index = {
 
   bindScroll: function() {
     var _this = this;
-    var shopTop = $('#front-splash').height();
 
     // Shop nav link clicked on index page
     $('.js-scroll-to-shop').on('click', function(event){
