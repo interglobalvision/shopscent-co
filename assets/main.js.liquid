@@ -77,7 +77,7 @@ Site.Index = {
     // if youtube video in splash, detect autoplay
     // if mobile browser detected, remove youtube video
     if ($('#front-video').length) {
-      detectAutoplay(100, function() {
+      detectAutoplay(1000, function() {
         $('#front-video').remove();
       });
     }
