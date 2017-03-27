@@ -20,6 +20,10 @@ Site = {
       _this.Product.init();
     }
 
+    if ($('#doodle').length) {
+      _this.Doodle.init();
+    }
+
     $('.js-tilt').tilt({
       reset: false,
     });
@@ -268,6 +272,64 @@ Site.Product = {
     $('#related-products').removeClass('u-hidden');
   },
 };
+
+Site.Doodle = {
+  init: function() {
+    var _this = this;
+    var keyframeSupport = $.keyframe.isSupported();
+
+    // stretch doodle to fit viewport
+    $('#doodle svg')[0].setAttribute('preserveAspectRatio', 'none');
+
+    if (keyframeSupport) {
+      // CSS keyframes supported unprefixed
+
+      var time = 0;
+      _this.keyframe = 1;
+
+      // run drawPath animation on each path or polyline elem
+      $('#doodle svg path, #doodle svg polyline').each(function() {
+        var elem = this;
+
+        setTimeout(function() {
+          _this.drawPath($(elem));
+        }, time);
+
+        time += 1000;
+      });
+    }
+  },
+
+  getPathLength: function(el){
+    var pathCoords = el.get(0);
+    var pathLength = pathCoords.getTotalLength();
+    return pathLength;
+  },
+
+  drawPath: function(el) {
+    var _this = this;
+    var pathLength = _this.getPathLength(el);
+
+    $.keyframe.define([{
+      name: 'keyframe-' + _this.keyframe,
+      '0%':   {'stroke-dashoffset':pathLength},
+      '50%':  {'stroke-dashoffset':0},
+      '100%': {'stroke-dashoffset':pathLength}
+    }]);
+
+    el.css({
+      'stroke-dasharray': pathLength,
+      'opacity': 1
+    }).playKeyframe({
+      name: 'keyframe-' + _this.keyframe,
+      timingFunction: 'linear',
+      iterationCount: 'infinite',
+      duration: '10s'
+    });
+
+    _this.keyframe++;
+  },
+}
 
 jQuery(document).ready(function () {
   'use strict';

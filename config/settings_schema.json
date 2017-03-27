@@ -1,5 +1,15 @@
 [
   {
+    "name": "Options",
+    "settings": [
+      {
+        "type":      "html",
+        "id":        "doodle",
+        "label":     "Doodle"
+      }
+    ]
+  },
+  {
     "name": "Front page",
     "settings": [
       {

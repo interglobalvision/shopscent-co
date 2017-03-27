@@ -72,6 +72,12 @@
     </div>
   </footer>
 
+  {% unless settings.doodle == blank %}
+  <div id="doodle">
+    {{ settings.doodle }}
+  </div>
+  {% endunless %}
+
   {{ 'library.js'  | asset_url | script_tag }}
   {{ 'main.js'  | asset_url | script_tag }}
 </body>
