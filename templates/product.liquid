@@ -6,7 +6,7 @@
         <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
       </div>
       <div class="grid-item item-s-12 item-m-4">
-        <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+        <img class="js-tilt" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
       </div>
     </div>
   </div>
