@@ -5,7 +5,20 @@ $header-height = 120px
 // BASIC
 
 #main-content
+  min-height: calc('100vh - ' + $header-height)
   margin-top: $header-height
+
+// ******************************************************
+
+// INDEX
+
+#header
+  &.index-header
+    top: calc('100vh - ' + $header-height)
+
+#main-content
+  &.index-content
+    margin-top: calc('100vh + ' + $header-height)
 
 // ******************************************************
 
