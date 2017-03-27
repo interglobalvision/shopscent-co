@@ -72,17 +72,20 @@ svg.pagination-arrow
 
 // CURSORS
 
-*, input[type='number']
-  cursor: $cursor-default, default !important
+*, input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button
+  cursor: $cursor-default, default
 
-.cursor-text, h1, h2, h3, h4, h5, h6, p, ul, ol, li, input
-  cursor: $cursor-text, text !important
+.cursor-text, h1, h2, h3, h4, h5, h6, p, ul, ol, li, input[type='text'], input[type='number'], textarea
+  cursor: $cursor-text, text
 
 .cursor-pointer, a, a *, input[type='submit']
-  cursor: $cursor-pointer, pointer !important
+  cursor: $cursor-pointer, pointer
+
+input[disabled]
+  cursor: $cursor-default, default
 
 #product-gallery-row
-  cursor: $cursor-ew-resize, ew-resize !important
+  cursor: $cursor-ew-resize, ew-resize
 
 // ******************************************************
 
