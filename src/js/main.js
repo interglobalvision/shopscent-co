@@ -77,8 +77,8 @@ Site.Index = {
     if ($('.index-header').length) {
       // bind stickyheader and scrollto shop
       _this.getHeaderTop();
-      _this.bindSticky();
       _this.bindScroll();
+      _this.bindShopClick();
     }
 
     // if youtube video in splash, detect autoplay
@@ -98,7 +98,7 @@ Site.Index = {
     _this.setSticky();
   },
 
-  bindSticky: function() {
+  bindScroll: function() {
     var _this = this;
 
     $(window).on('scroll', function() {
@@ -120,7 +120,7 @@ Site.Index = {
     }
   },
 
-  bindScroll: function() {
+  bindShopClick: function() {
     var _this = this;
 
     // Shop nav link clicked on index page
