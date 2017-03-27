@@ -1,9 +1,10 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global jQuery, $, document, Site, Modernizr, Shopify */
+/* global jQuery, $, document, Site, Modernizr, Shopify, detectAutoplay */
 
 Site = {
   mobileThreshold: 601,
   debounceTimer: null,
+  isIndex: $('.index-content').length,
   init: function() {
     var _this = this;
 
@@ -11,14 +12,27 @@ Site = {
       _this.onResize();
     });
 
+    if (_this.isIndex) {
+      _this.Index.init();
+    }
+
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
     }
+
+    $('.js-tilt').tilt({
+      reset: false,
+    });
 
   },
 
   onResize: function() {
     var _this = this;
+
+    if (_this.isIndex) {
+      // reset header offset top and sticky state on resize
+      _this.Index.getHeaderTop();
+    }
 
     if ($('#product-gallery').length) {
       // debounce resize event for product gallery
@@ -44,12 +58,97 @@ Site = {
 
 };
 
-Site.Product = {
+Site.Index = {
   init: function() {
     var _this = this;
 
-    if ($('#product-gallery').length) {
-      $('#product-gallery').imagesLoaded( function() {
+    if (window.location.href.indexOf('#shop') !== -1) {
+      // url has #shop
+
+      // remove #shop from url in address bar
+      history.replaceState({}, document.title, '/');
+
+      // scrollto shop after 300ms
+      setTimeout(function(){
+        _this.scrollToShop();
+      }, 300);
+    }
+
+    if ($('.index-header').length) {
+      // bind stickyheader and scrollto shop
+      _this.getHeaderTop();
+      _this.bindScroll();
+      _this.bindShopClick();
+    }
+
+    // if youtube video in splash, detect autoplay
+    // if mobile browser detected, remove youtube video
+    if ($('#front-video').length) {
+      detectAutoplay(2000, function() {
+        $('#front-video').remove();
+      });
+    }
+  },
+
+  getHeaderTop: function() {
+    var _this = this;
+
+    _this.headerTop = $(window).innerHeight() - $('#header').outerHeight();
+
+    _this.setSticky();
+  },
+
+  bindScroll: function() {
+    var _this = this;
+
+    $(window).on('scroll', function() {
+      _this.setSticky();
+    });
+  },
+
+  setSticky: function() {
+    var _this = this;
+    var scrollPos = $(window).scrollTop();
+
+    // stick header
+    if (scrollPos >= _this.headerTop){
+      $('#header').removeClass('index-header');
+    }
+    // unstick header
+    if (scrollPos < _this.headerTop){
+      $('#header').addClass('index-header');
+    }
+  },
+
+  bindShopClick: function() {
+    var _this = this;
+
+    // Shop nav link clicked on index page
+    $('.js-scroll-to-shop').on('click', function(event){
+      event.preventDefault();
+
+      _this.scrollToShop();
+
+      // unfocus Shop nav link
+      $(this).trigger('blur');
+    });
+  },
+
+  scrollToShop: function() {
+    var shopTop = $('#front-splash').height();
+
+    $('body').stop().animate({scrollTop: shopTop}, '500', 'swing');
+  },
+};
+
+Site.Product = {
+  $gallery: $('#product-gallery'),
+  $galleryRow: $('#product-gallery-row'),
+  init: function() {
+    var _this = this;
+
+    if (_this.$gallery.length) {
+      _this.$gallery.imagesLoaded( function() {
         _this.setGalleryDimensions();
       });
     }
@@ -74,22 +173,22 @@ Site.Product = {
       galleryWidth += $(this)[0].getBoundingClientRect().width;
     });
 
-    $('#product-gallery-row').css('transition', 'none');
+    _this.$galleryRow.css('transition', 'none');
 
     //  set gallery width to width of gallery items
-    $('#product-gallery-row').width(galleryWidth);
+    _this.$galleryRow.width(galleryWidth);
 
     if (galleryWidth > windowWidth) {
       // gallery is more than window width
       var galleryContainerWidth = galleryWidth + (galleryWidth - windowWidth);
 
       // set the gallery container width and horizontally center it
-      $('#product-gallery')
+      _this.$gallery
         .width(galleryContainerWidth)
         .css('left', ((windowWidth / 2) - (galleryContainerWidth / 2)) + 'px');
 
       // horizontally center gallery in container
-      $('#product-gallery-row').css('left', ((galleryContainerWidth / 2) - (galleryWidth / 2)) + 'px');
+      _this.$galleryRow.css('left', ((galleryContainerWidth / 2) - (galleryWidth / 2)) + 'px');
 
       // bind dragging
       _this.bindGalleryDrag();
@@ -98,12 +197,12 @@ Site.Product = {
       // gallery is less than window width
 
       // center the gallery container. same width as gallery
-      $('#product-gallery')
+      _this.$gallery
         .width(galleryWidth)
         .css('left', ((windowWidth / 2) - (galleryWidth / 2)) + 'px');
 
       // 0 the gallery position in its container
-      $('#product-gallery-row').css({
+      _this.$galleryRow.css({
         'left' : '0'
       });
 
@@ -114,8 +213,10 @@ Site.Product = {
   },
 
   bindGalleryDrag: function() {
+    var _this = this;
+
     // bind the drag and change cursor to arrows
-    $('#product-gallery-row').pep({
+    _this.$galleryRow.pep({
       axis: 'x',
       constrainTo: 'parent',
       place: false,
@@ -124,12 +225,14 @@ Site.Product = {
   },
 
   unbindGalleryDrag: function() {
+    var _this = this;
+
     // unbind the drag and change cursor to default
-    $.pep.unbind($('#product-gallery-row'));
-    $('#product-gallery-row').css('cursor', 'default');
+    $.pep.unbind(_this.$galleryRow);
+    _this.$galleryRow.css('cursor', 'default');
   },
 
-  selectCallback: function(variant, selector) {
+  selectCallback: function(variant) {
     if (variant && variant.available === true) {
       // variant exists. hide out-of-stock notice and enable button
       $('#product-add-holder').removeClass('out-of-stock');

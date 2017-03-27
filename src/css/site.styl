@@ -57,7 +57,11 @@ input, select, a
     outline: none
     color: $color-red
     img
-      box-shadow: 0 0 40px -5px $color-red
+      filter: drop-shadow(0 0 40px $color-red)
+
+svg.pagination-arrow
+  path
+    fill: $color-black
 
 // ******************************************************
 
@@ -81,9 +85,59 @@ input, select
   top: 0
   left: 0
   z-index: 500
+  transition: color 300ms
+
 
 #nav-cart-count
   vertical-align: middle
+
+// ******************************************************
+
+// INDEX
+
+#header
+  &.index-header
+    position: absolute
+    color: $color-white
+    will-change: color, top
+
+#front-splash
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  overflow: hidden
+  background-color: $color-black
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  pointer-events: none
+  iframe
+    position: absolute
+    top: 50%
+    left: 50%
+    height: 56.25vw
+    width: 177.77777778vh
+    min-height: 100%
+    min-width: 100%
+    transform: translate(-50%, -50%)
+    box-sizing: border-box
+    pointer-events: none
+
+#front-video
+  height: 100vh
+  width: calc('(100vh / 9) * 16')
+
+#front-logo-holder
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+
+#front-logo
+  filter: drop-shadow(0 0 100px $color-white)
 
 // ******************************************************
 
@@ -163,7 +217,7 @@ $font-size-extra = 56px
 $font-size-large = 40px
 $font-size-mid = 28px
 $font-size-basic = 18px
-$font-size-small = 14px
+$font-size-small = 16px
 $font-size-tiny = 12px
 $font-size-micro = 10px
 
@@ -190,7 +244,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $font-size-large = 70px
   $font-size-mid = 32px
   $font-size-basic = 21px
-  $font-size-small = 16px
+  $font-size-small = 18px
   $font-size-tiny = 14px
   $font-size-micro = 12px
 
