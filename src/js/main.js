@@ -12,7 +12,7 @@ Site = {
       _this.onResize();
     });
 
-    if (isIndex) {
+    if (_this.isIndex) {
       _this.Index.init();
     }
 
