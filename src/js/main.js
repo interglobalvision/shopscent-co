@@ -12,7 +12,7 @@ Site = {
       _this.onResize();
     });
 
-    if ($('body').hasClass('template-index')) {
+    if (isIndex) {
       _this.Index.init();
     }
 
