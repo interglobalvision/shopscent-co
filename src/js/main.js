@@ -173,23 +173,28 @@ Site.Product = {
 Site.Doodle = {
   init: function() {
     var _this = this;
-    var time = 0;
-
-    _this.keyframe = 1;
+    var keyframeSupport = $.keyframe.isSupported();
 
     // stretch doodle to fit viewport
     $('#doodle svg')[0].setAttribute('preserveAspectRatio', 'none');
 
-    // run drawPath animation on each path or polyline elem
-    $('#doodle svg path, #doodle svg polyline').each(function() {
-      var elem = this;
+    if (keyframeSupport) {
+      // CSS keyframes supported unprefixed
+      
+      var time = 0;
+      _this.keyframe = 1;
 
-      setTimeout(function() {
-        _this.drawPath($(elem));
-      }, time);
+      // run drawPath animation on each path or polyline elem
+      $('#doodle svg path, #doodle svg polyline').each(function() {
+        var elem = this;
 
-      time += 1000;
-    });
+        setTimeout(function() {
+          _this.drawPath($(elem));
+        }, time);
+
+        time += 1000;
+      });
+    }
   },
 
   getPathLength: function(el){
