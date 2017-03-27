@@ -2,7 +2,7 @@
 {{ page.content }}
 {% assign collection = collections.all %}
 
-{% paginate collection.products by 12 %}
+{% paginate collection.products by 2 %}
 
 {% if paginate.current_page == 1 %}
 <section id="front-splash" {% unless settings.front_background_image == blank %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endunless %}>
@@ -49,14 +49,14 @@
         {% else %}
         <a href="{{ paginate.previous.url }}">
         {% endif %}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><title>arrow-left</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M23.06,54,56.81,87.75l-8.72,8.44L0,48.09,48.09,0l8.44,8.44L23.06,42.19H96.19V54Z"/></g></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19" class="pagination-arrow"><path d="M23.06,54,56.81,87.75l-8.72,8.44L0,48.09,48.09,0l8.44,8.44L23.06,42.19H96.19V54Z"/></svg>
         </a>
       {% endif %}
       </div>
       <div class="grid-item item-s-6 text-align-right">
       {% if paginate.next.is_link %}
         <a href="{{ paginate.next.url }}">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><title>arrow-right</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M0,54V42.19H73.13L39.66,8.44,48.09,0,96.19,48.09,48.09,96.19l-8.72-8.44L73.13,54Z"/></g></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><path d="M0,54V42.19H73.13L39.66,8.44,48.09,0,96.19,48.09,48.09,96.19l-8.72-8.44L73.13,54Z"/></svg>
         </a>
       {% endif %}
       </div>
