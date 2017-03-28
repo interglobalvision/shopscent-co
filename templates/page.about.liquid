@@ -4,35 +4,38 @@
     <!--Mobile Only-->
     <div id="blog-mobile" class="grid-row">
       {% for article in blogs['about'].articles %}
-      <div class="grid-item item-s-12">
+      <article class="blog-item-mobile grid-item margin-bottom-large">
+        <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
         {{ article.content }}
-      </div>
+      </article>
       {% endfor %}
     </div>
     <!--End Mobile Only-->
 
     <!--Tablet/Desktop Only-->
     <div id="blog-desktop" class="grid-row">
-      <div class="grid-item item-s-12 item-m-6">
+      <div id="blog-left-holder" class="grid-item item-m-6">
         <div id="blog-column-left" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod != 0 %}
-              <div class="blog-item">
+              <article class="blog-item margin-bottom-large">
+                <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 {{ article.content }}
-              </div>
+              </article>
             {% endif %}
           {% endfor %}
         </div>
       </div>
-      <div class="grid-item item-m-6">
-        <div id="blog-column-right" class="grid-column">
+      <div id="blog-right-holder" class="grid-item item-m-6">
+        <div id="blog-column-right" class="grid-column text-align-right">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod == 0 %}
-              <div class="blog-item">
+              <article class="blog-item margin-bottom-large">
+                <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 {{ article.content }}
-              </div>
+              </article>
             {% endif %}
           {% endfor %}
         </div>
