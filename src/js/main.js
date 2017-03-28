@@ -291,12 +291,12 @@ Site.Blog = {
       _this.$blogIframes = _this.$blogItem.find('iframe');
 
       if (_this.$blogIframes.length) {
-        _this.sizeIframes();
+        _this.scaleIframes();
       }
     }
   },
 
-  sizeIframes: function() {
+  scaleIframes: function() {
     var _this = this;
 
     _this.$blogIframes.each(function() {
