@@ -28,7 +28,7 @@
         </div>
       </div>
       <div id="blog-right-holder" class="grid-item item-m-6">
-        <div id="blog-column-right" class="grid-column text-align-right">
+        <div id="blog-column-right" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod == 0 %}
