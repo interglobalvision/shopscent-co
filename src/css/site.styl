@@ -84,8 +84,11 @@ input, select
   width: 100vw
   top: 0
   left: 0
-  z-index: 500
+  z-index: 400
   transition: color 300ms
+  nav
+    position: relative
+    z-index: 400
 
 #nav-cart-count
   vertical-align: middle
@@ -201,6 +204,7 @@ input, select
 
 #blog-border-block
   display: none
+  z-index: 300
 
 .blog-item-mobile
   max-width: 400px
@@ -217,8 +221,10 @@ h2.blog-title
 // FOOTER
 
 #footer
+  position: relative
   background-color: $color-black
   color: $color-white
+  z-index: 400
 
 // ******************************************************
 
