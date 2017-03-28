@@ -84,9 +84,8 @@ input, select
   width: 100vw
   top: 0
   left: 0
-  z-index: 500
+  z-index: 400
   transition: color 300ms
-
 
 #nav-cart-count
   vertical-align: middle
@@ -196,11 +195,31 @@ input, select
 
 // ******************************************************
 
+// BLOG
+
+#about-blog, #about-blog-single
+  iframe
+    max-width: 100%
+
+.blog-item-mobile
+  max-width: 400px
+
+.blog-title
+  margin-bottom: 1rem
+
+.blog-item, .blog-item-mobile
+  &:last-of-type
+    margin-bottom: 0
+
+// ******************************************************
+
 // FOOTER
 
 #footer
+  position: relative
   background-color: $color-black
   color: $color-white
+  z-index: 400
 
 // ******************************************************
 
@@ -277,7 +296,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  grid(680px, $gutter, m)
+  grid(90%, $gutter, m)
 
   font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
@@ -305,7 +324,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $font-size-tiny = 18px
   $font-size-micro = 13px
 
-  grid(1000px, $gutter, l)
+  grid(90%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -326,7 +345,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $font-size-tiny = 20px
   $font-size-micro = 14px
 
-  grid(1200px)
+  grid(90%)
 
   font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 

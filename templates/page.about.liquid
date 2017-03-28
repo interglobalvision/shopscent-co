@@ -1,38 +1,41 @@
-{% paginate blogs['about'].articles by 4 %}
-<section id="about-blog">
+{% paginate blogs['about'].articles by 8 %}
+<section id="about-blog" class="margin-bottom-large font-size-small">
   <div class="container">
     <!--Mobile Only-->
-    <div id="blog-mobile" class="grid-row">
+    <div id="blog-mobile" class="grid-row margin-bottom-large">
       {% for article in blogs['about'].articles %}
-      <div class="grid-item item-s-12">
+      <article class="blog-item-mobile grid-item margin-bottom-large">
+        <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
         {{ article.content }}
-      </div>
+      </article>
       {% endfor %}
     </div>
     <!--End Mobile Only-->
 
     <!--Tablet/Desktop Only-->
     <div id="blog-desktop" class="grid-row">
-      <div class="grid-item item-s-12 item-m-6">
+      <div id="blog-left-holder" class="grid-item item-m-6 item-l-5">
         <div id="blog-column-left" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod != 0 %}
-              <div class="blog-item">
+              <article class="blog-item margin-bottom-large">
+                <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 {{ article.content }}
-              </div>
+              </article>
             {% endif %}
           {% endfor %}
         </div>
       </div>
-      <div class="grid-item item-m-6">
+      <div id="blog-right-holder" class="grid-item item-m-6 item-l-5 offset-l-2">
         <div id="blog-column-right" class="grid-column">
           {% for article in blogs['about'].articles %}
             {% assign mod = forloop.index | modulo: 2 %}
             {% if mod == 0 %}
-              <div class="blog-item">
+              <article class="blog-item margin-bottom-large">
+                <h2 class="blog-title font-bold"><a href="{{ article.url }}">{{ article.title }}</a></h2>
                 {{ article.content }}
-              </div>
+              </article>
             {% endif %}
           {% endfor %}
         </div>
@@ -43,17 +46,21 @@
 </section>
 
 {% if paginate.pages > 1 %}
-<section id="about-pagination">
+<section id="about-pagination" class="margin-bottom-mid">
   <div class="container">
     <div class="grid-row">
       <div class="grid-item item-s-6">
       {% if paginate.previous.is_link %}
-        <a href="{{ paginate.previous.url }}"><-</a>
+        <a href="{{ paginate.previous.url }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19" class="pagination-arrow"><path d="M23.06,54,56.81,87.75l-8.72,8.44L0,48.09,48.09,0l8.44,8.44L23.06,42.19H96.19V54Z"/></svg>
+        </a>
       {% endif %}
       </div>
       <div class="grid-item item-s-6 text-align-right">
       {% if paginate.next.is_link %}
-        <a href="{{ paginate.next.url }}">-></a>
+        <a href="{{ paginate.next.url }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.19 96.19"  class="pagination-arrow"><path d="M0,54V42.19H73.13L39.66,8.44,48.09,0,96.19,48.09,48.09,96.19l-8.72-8.44L73.13,54Z"/></svg>
+        </a>
       {% endif %}
       </div>
     </div>
