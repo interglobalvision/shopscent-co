@@ -2,7 +2,7 @@
 {{ page.content }}
 {% assign collection = collections.all %}
 
-{% paginate collection.products by 2 %}
+{% paginate collection.products by 12 %}
 
 {% if paginate.current_page == 1 %}
 <section id="front-splash" {% unless settings.front_background_image == blank %}style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"{% endunless %}>
