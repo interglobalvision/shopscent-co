@@ -54,32 +54,20 @@ svg.pagination-arrow
 
 #blog-desktop
   display: flex
+  img, iframe
+    max-width: 90%
 
 #blog-mobile
   display: none
 
+#blog-column-right
+  p
+    overflow: auto
+  img, iframe
+    float: right
+
 .blog-item-single
   max-width: none
-
-body#about
-  #blog-border-block
-    position: absolute
-    display: block
-    background: $color-white
-    width: 4px
-    height: 100%
-    top: 0
-    left: calc('50vw - 2px')
-
-#blog-left-holder
-  border-right: 2px solid $color-black
-
-#blog-right-holder
-  border-left: 2px solid $color-black
-
-#blog-desktop
-  img, iframe
-    max-width: 90%
 
 // ******************************************************
 
