@@ -1,11 +1,11 @@
 <section id="product-header" class="margin-bottom-basic">
   <div class="container">
     <div class="grid-row align-items-center">
-      <div class="grid-item item-s-12 item-m-8">
+      <div class="grid-item item-s-12 item-m-6 item-l-8">
         <h1 id="product-title" class="font-size-large line-tighter">{{ product.title }}</h1>
         <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
       </div>
-      <div class="grid-item item-s-12 item-m-4">
+      <div class="grid-item item-s-12 item-m-6 item-l-4">
         <img class="js-tilt" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
       </div>
     </div>
