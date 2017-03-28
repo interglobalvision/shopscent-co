@@ -20,6 +20,10 @@ Site = {
       _this.Product.init();
     }
 
+    if ($('body#about').length || $('body').hasClass('template-article')) {
+      _this.Blog.init();
+    }
+
     if ($('#doodle').length) {
       _this.Doodle.init();
     }
@@ -36,6 +40,10 @@ Site = {
     if (_this.isIndex) {
       // reset header offset top and sticky state on resize
       _this.Index.getHeaderTop();
+    }
+
+    if ($('.blog-item, .blog-item-mobile, .blog-item-single').find('iframe').length) {
+      _this.Blog.sizeIframes();
     }
 
     if ($('#product-gallery').length) {
@@ -271,6 +279,35 @@ Site.Product = {
 
     $('#related-products').removeClass('u-hidden');
   },
+};
+
+Site.Blog = {
+  $blogItem: $('.blog-item, .blog-item-mobile, .blog-item-single'),
+  $blogIframes: null,
+  init: function() {
+    var _this = this;
+
+    if (_this.$blogItem.length) {
+      _this.$blogIframes = _this.$blogItem.find('iframe');
+
+      if (_this.$blogIframes.length) {
+        _this.sizeIframes();
+      }
+    }
+  },
+
+  sizeIframes: function() {
+    var _this = this;
+
+    _this.$blogIframes.each(function() {
+      var origWidth = $(this).attr('width'),
+        origHeight = $(this).attr('height'),
+        iframeWidth = $(this).width(),
+        heightRatio = origHeight / origWidth;
+
+      $(this).css('height', iframeWidth * heightRatio + 'px');
+    });
+  }
 };
 
 Site.Doodle = {
