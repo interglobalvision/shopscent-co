@@ -43,7 +43,7 @@ Site = {
     }
 
     if ($('.blog-item, .blog-item-mobile, .blog-item-single').find('iframe').length) {
-      _this.Blog.sizeIframes();
+      _this.Blog.scaleIframes();
     }
 
     if ($('#product-gallery').length) {
