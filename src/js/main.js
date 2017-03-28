@@ -90,6 +90,7 @@ Site.Index = {
     if ($('#front-video').length) {
       detectAutoplay(2000, function() {
         $('#front-video').remove();
+        $('#front-splash').css('background-size', 'cover');
       });
     }
   },
