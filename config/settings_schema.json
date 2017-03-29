@@ -6,6 +6,12 @@
         "type":      "html",
         "id":        "doodle",
         "label":     "Doodle"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent color",
+        "default": "#b58293"
       }
     ]
   },
