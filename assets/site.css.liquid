@@ -623,24 +623,24 @@ template {
   src: local("FreeSans"), url("FreeSans.eot?#iefix") format("embedded-opentype"), url("FreeSans.woff2") format("woff2"), url("FreeSans.woff") format("woff"), url("FreeSans.ttf") format("truetype"), url("FreeSans.svg#FreeSans") format("svg");
 }
 @font-face {
-  font-family: 'FreeSans';
+  font-family: 'FreeSansOblique';
   font-weight: normal;
   font-style: italic;
   src: url("FreeSansOblique.eot");
-  src: local("FreeSans"), url("FreeSansOblique.eot?#iefix") format("embedded-opentype"), url("FreeSansOblique.woff2") format("woff2"), url("FreeSansOblique.woff") format("woff"), url("FreeSansOblique.ttf") format("truetype"), url("FreeSansOblique.svg#FreeSans") format("svg");
+  src: local("FreeSansOblique"), url("FreeSansOblique.eot?#iefix") format("embedded-opentype"), url("FreeSansOblique.woff2") format("woff2"), url("FreeSansOblique.woff") format("woff"), url("FreeSansOblique.ttf") format("truetype"), url("FreeSansOblique.svg#FreeSansOblique") format("svg");
 }
 @font-face {
-  font-family: 'FreeSans';
+  font-family: 'FreeSansBold';
   font-weight: bold;
   src: url("FreeSansBold.eot");
-  src: local("FreeSans"), url("FreeSansBold.eot?#iefix") format("embedded-opentype"), url("FreeSansBold.woff2") format("woff2"), url("FreeSansBold.woff") format("woff"), url("FreeSansBold.ttf") format("truetype"), url("FreeSansBold.svg#FreeSans") format("svg");
+  src: local("FreeSansBold"), url("FreeSansBold.eot?#iefix") format("embedded-opentype"), url("FreeSansBold.woff2") format("woff2"), url("FreeSansBold.woff") format("woff"), url("FreeSansBold.ttf") format("truetype"), url("FreeSansBold.svg#FreeSansBold") format("svg");
 }
 @font-face {
-  font-family: 'FreeSans';
+  font-family: 'FreeSansBoldOblique';
   font-weight: bold;
   font-style: italic;
   src: url("FreeSansBoldOblique.eot");
-  src: local("FreeSans"), url("FreeSansBoldOblique.eot?#iefix") format("embedded-opentype"), url("FreeSansBoldOblique.woff2") format("woff2"), url("FreeSansBoldOblique.woff") format("woff"), url("FreeSansBoldOblique.ttf") format("truetype"), url("FreeSansBoldOblique.svg#FreeSans") format("svg");
+  src: local("FreeSansBoldOblique"), url("FreeSansBoldOblique.eot?#iefix") format("embedded-opentype"), url("FreeSansBoldOblique.woff2") format("woff2"), url("FreeSansBoldOblique.woff") format("woff"), url("FreeSansBoldOblique.ttf") format("truetype"), url("FreeSansBoldOblique.svg#FreeSansBoldOblique") format("svg");
 }
 html {
   font-family: 'FreeSans', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -655,19 +655,30 @@ p {
 .font-sans {
   font-family: 'FreeSans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.font-serif {
-  font-family: Georgia, Times, "Times New Roman", serif;
-}
 .font-larger {
   font-size: 1.3rem;
 }
 em,
 .font-italic {
-  font-style: italic;
+  font-family: 'FreeSansOblique';
+  font-style: normal;
+}
+em strong,
+.font-italic strong,
+em .font-bold,
+.font-italic .font-bold {
+  font-family: 'FreeSansBoldOblique';
 }
 strong,
 .font-bold {
-  font-weight: bold;
+  font-family: 'FreeSansBold';
+  font-weight: normal;
+}
+strong em,
+.font-bold em,
+strong .font-italic,
+.font-bold .font-italic {
+  font-family: 'FreeSansBoldOblique';
 }
 .font-small-caps {
   text-transform: uppercase;
