@@ -4,7 +4,7 @@
     {% for item in cart.items %}
     <div id="cart-item-{{item.variant.id}}" class="grid-row padding-bottom-basic">
       <div class="grid-item item-s-12 item-m-4 cart-item-image">
-        <a href="/cart/change/{{item.variant.id}}?quantity=0" class="cart-item-remove">&times;</a>
+        <a href="/cart/change/{{item.variant.id}}?quantity=0" class="cart-item-remove" title="Remove">&times;</a>
         <a href="{{ item.url }}">
           {% if item.variant.image != blank %}
             <img src="{{ item.variant.image | img_url: '650x650' }}" alt="{{ item.title | escape }}" />
