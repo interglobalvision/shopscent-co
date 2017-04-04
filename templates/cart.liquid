@@ -1,9 +1,9 @@
-<div class="container padding-top-large">
+<div class="container">
 {% if cart.item_count > 0 %}
   <form action="/cart" method="post" id="cart" class="cart">
     {% for item in cart.items %}
     <div id="cart-item-{{item.variant.id}}" class="grid-row padding-bottom-basic">
-      <div class="grid-item item-s-12 item-m-6 cart-item-image">
+      <div class="grid-item item-s-12 item-m-4 cart-item-image">
         <a href="/cart/change/{{item.variant.id}}?quantity=0" class="cart-item-remove">&times;</a>
         <a href="{{ item.url }}">
           {% if item.variant.image != blank %}
@@ -13,33 +13,33 @@
           {% endif %}
         </a>
       </div>
-      <div class="grid-item item-s-12 item-m-4">
+      <div class="grid-item item-s-12 item-m-6">
         <a href="{{ item.url }}">
-          <h3 class="cart-item-title">{{ item.product.title }}</h3>
+          <h3 class="cart-item-title margin-top-small">{{ item.product.title }}</h3>
           {% if item.variant.title != 'Default Title' %}
-            <h5 class="cart-item-variant-title">{{ item.variant.title }}</h5>
+            <h5 class="cart-item-variant-title font-size-small margin-top-small">{{ item.variant.title }}</h5>
           {% endif %}
         </a>
 
-        <div class="cart-item-details">
-          <input type="number" class="cart-item-quantity" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="quantity" value="{{ item.quantity }}" min="0" onfocus="this.select();"/> at {{ item.price | money }} each
+        <div class="cart-item-details font-size-small margin-top-small">
+          <input type="number" class="cart-item-quantity" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" value="{{ item.quantity }}" min="0" max="99" onfocus="this.select();"/> at {{ item.price | money }} each
         </div>
       </div>
-      <div class="grid-item item-s-12 item-m-2 text-align-right">{{ item.line_price | money }}</div>
+      <div class="grid-item item-s-12 item-m-2 margin-top-small" id="cart-item-subtotal">{{ item.line_price | money }}</div>
     </div>
     {% endfor %}
     <div class="grid-row padding-bottom-basic">
-      <div class="grid-item item-s-12 text-align-right">Total: <strong>{{ cart.total_price | money }}</strong></div>
+      <div class="grid-item item-s-6 item-m-4 offset-m-4">
+        <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
+      </div>
+      <div class="grid-item item-s-6 item-m-4 text-align-right">Subtotal: <strong>{{ cart.total_price | money }}</strong></div>
     </div>
 
     <div class="grid-row">
-      <div class="grid-item item-s-12 item-m-6">
+      <div class="grid-item item-s-12 item-m-4 offset-m-4 margin-bottom-small">
         <textarea id="cart-note" placeholder="Order notes...">{{ cart.note }}</textarea>
       </div>
-      <div class="grid-item item-s-6 item-m-3">
-        <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
-      </div>
-      <div class="grid-item item-s-6 item-m-3 text-align-right">
+      <div class="grid-item item-s-12 item-m-4 text-align-right">
         <input class="button" type="submit" name="checkout" value="Checkout" />
       </div>
     </div>
