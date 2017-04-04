@@ -58,6 +58,13 @@ input, select, a
     img
       filter: drop-shadow(0 0 40px $color-white)
 
+textarea
+  width: 100%
+  background: $color-white
+  &:focus
+    outline: none
+    box-shadow: 0 0 10px $color-white
+
 svg.pagination-arrow
   path
     fill: $color-black
@@ -66,13 +73,24 @@ svg.pagination-arrow
 
 // FORM
 
-input, select
+input, select, textarea
   appearance: none
   background: none
   border: 0
   border-radius: 0
   border-bottom: 2px solid $color-black
   padding: 0
+  &.button
+    border: 0
+    background: none
+    font-weight: bold
+    text-transform: uppercase
+    cursor: pointer
+    &:disabled
+      cursor: default
+
+textarea
+  border: 2px solid $color-black
 
 // ******************************************************
 
@@ -183,15 +201,6 @@ input, select
     #product-unavailable
       display: block
 
-#add
-  border: 0
-  background: none
-  font-weight: bold
-  text-transform: uppercase
-  cursor: pointer
-  &:disabled
-    cursor: default
-
 // ******************************************************
 
 // BLOG
@@ -244,6 +253,18 @@ input, select
       fill: none
       stroke: $color-white
       opacity: 0
+
+// ******************************************************
+
+// CART
+
+.cart-item-remove
+  position: absolute
+  top: 0
+  font-size: 40px
+
+.cart-item-quantity
+  width: 50px
 
 // ******************************************************
 
