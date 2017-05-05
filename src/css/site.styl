@@ -125,21 +125,32 @@ textarea
   height: 100vh
   overflow: hidden
   background-color: $color-black
-  background-size: 0
+  pointer-events: none
+
+#front-splash-image
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 10
+  background-size: cover
   background-position: center
   background-repeat: no-repeat
+
+#front-video
+  opacity: 0
+  position: absolute
+  top: 50%
+  left: 50%
+  height: 56.25vw
+  z-index: 20
+  width: 177.77777778vh
+  min-height: 100%
+  min-width: 100%
+  transform: translate(-50%, -50%)
+  box-sizing: border-box
   pointer-events: none
-  iframe
-    position: absolute
-    top: 50%
-    left: 50%
-    height: 56.25vw
-    width: 177.77777778vh
-    min-height: 100%
-    min-width: 100%
-    transform: translate(-50%, -50%)
-    box-sizing: border-box
-    pointer-events: none
 
 #front-logo-holder
   position: absolute
@@ -147,6 +158,7 @@ textarea
   left: 0
   width: 100vw
   height: 100vh
+  z-index: 30
 
 #front-logo
   filter: drop-shadow(0 0 100px $color-white)

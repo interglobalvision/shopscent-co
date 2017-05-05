@@ -1,5 +1,5 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global jQuery, $, document, Site, Modernizr, Shopify, detectAutoplay */
+/* global $, document, Site, Shopify, detectAutoplay, YT */
 
 Site = {
   mobileThreshold: 601,
@@ -8,16 +8,8 @@ Site = {
   init: function() {
     var _this = this;
 
-    $(window).resize(function(){
-      _this.onResize();
-    });
-
     if (_this.isIndex) {
       _this.Index.init();
-    }
-
-    if ($('body').hasClass('template-product')) {
-      _this.Product.init();
     }
 
     if ($('body#about').length || $('body').hasClass('template-article')) {
@@ -30,6 +22,18 @@ Site = {
 
     $('.js-tilt').tilt({
       reset: false,
+    });
+
+    $(document).ready(function () {
+
+      if ($('body').hasClass('template-product')) {
+        _this.Product.init();
+      }
+
+      $(window).resize(function(){
+        _this.onResize();
+      });
+
     });
 
   },
@@ -96,9 +100,10 @@ Site.Index = {
     // if youtube video in splash, detect autoplay
     // if mobile browser detected, remove youtube video
     if ($('#front-video').length) {
+      _this.Video.init();
+
       detectAutoplay(2000, function() {
-        $('#front-video').remove();
-        $('#front-splash').css('background-size', 'cover');
+        _this.Video.remove();
       });
     }
   },
@@ -152,6 +157,60 @@ Site.Index = {
 
     $('body').stop().animate({scrollTop: shopTop}, '500', 'swing');
   },
+
+  Video: {
+    $video: $('#front-video'),
+    timeout: undefined,
+
+    init: function() {
+      var _this = this;
+
+      // async add the Youtube player API library
+      var tag = document.createElement('script');
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+
+      tag.src = 'https://www.youtube.com/iframe_api';
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    },
+
+    APIReady: function() {
+      // called by the global function triggered on API ready
+      var _this = this;
+
+      _this.player = new YT.Player('front-video', {
+        events: {
+          'onReady': _this.onReady,
+          'onStateChange': _this.onPlayerStateChange.bind(_this)
+        }
+      });
+    },
+
+    onReady: function(event) {
+      event.target.playVideo();
+    },
+
+    onPlayerStateChange: function(event) {
+      var _this = this;
+
+      // video is playing if value is 1
+      if (event.data === 1) {
+        var duration = event.target.getDuration();
+
+        _this.$video.css('opacity', 1);
+
+        // set a timeout 100ms shorter than the length of the video. when it fires it restarts the video. this stops the reload when doing Youtube loopled playlist
+        _this.timeout = setTimeout(function() {
+          event.target.seekTo(0);
+        }, (duration * 1000) - 100);
+      }
+    },
+
+    remove: function() {
+      var _this = this;
+
+      _this.$video.remove();
+    },
+  }
 };
 
 Site.Product = {
@@ -367,11 +426,11 @@ Site.Doodle = {
 
     _this.keyframe++;
   },
+};
+
+Site.init();
+
+// Youtube player API triggers this function when ready
+function onYouTubeIframeAPIReady() {
+  Site.Index.Video.APIReady();
 }
-
-jQuery(document).ready(function () {
-  'use strict';
-
-  Site.init();
-
-});
