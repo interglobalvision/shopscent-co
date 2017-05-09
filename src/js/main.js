@@ -373,37 +373,34 @@ Site.Blog = {
 Site.Doodle = {
   init: function() {
     var _this = this;
-    var keyframeSupport = $.keyframe.isSupported();
 
     // stretch doodle to fit viewport
     $('#doodle svg')[0].setAttribute('preserveAspectRatio', 'none');
 
-    if (keyframeSupport) {
-      // CSS keyframes supported unprefixed
+    var time = 0;
+    _this.keyframe = 1;
 
-      var time = 0;
-      _this.keyframe = 1;
+    // run drawPath animation on each path or polyline elem
+    $('#doodle svg path, #doodle svg polyline').each(function() {
+      var elem = this;
 
-      // run drawPath animation on each path or polyline elem
-      $('#doodle svg path, #doodle svg polyline').each(function() {
-        var elem = this;
+      setTimeout(function() {
+        _this.drawPath($(elem));
+      }, time);
 
-        setTimeout(function() {
-          _this.drawPath($(elem));
-        }, time);
-
-        time += 1000;
-      });
-    }
+      time += 1000;
+    });
   },
 
   getPathLength: function(el){
+    console.log('getPathLength');
     var pathCoords = el.get(0);
     var pathLength = pathCoords.getTotalLength();
     return pathLength;
   },
 
   drawPath: function(el) {
+    console.log('drawPath');
     var _this = this;
     var pathLength = _this.getPathLength(el);
 
