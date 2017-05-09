@@ -165,6 +165,7 @@ Site.Index = {
     init: function() {
       var _this = this;
 
+      // async add the Youtube player API library
       var tag = document.createElement('script');
       var firstScriptTag = document.getElementsByTagName('script')[0];
 
@@ -173,6 +174,7 @@ Site.Index = {
     },
 
     APIReady: function() {
+      // called by the global function triggered on API ready
       var _this = this;
 
       _this.player = new YT.Player('front-video', {
@@ -185,20 +187,24 @@ Site.Index = {
 
     onReady: function(event) {
       event.target.playVideo();
+
+      if ($('#front-splash').attr('data-mute')) {
+        event.target.mute();
+      }
     },
 
     onPlayerStateChange: function(event) {
       var _this = this;
 
+      // video is playing if value is 1
       if (event.data === 1) {
-        _this.$video.css('opacity', 1);
-
         var duration = event.target.getDuration();
 
+        _this.$video.css('opacity', 1);
+
+        // set a timeout 100ms shorter than the length of the video. when it fires it restarts the video. this stops the reload when doing Youtube loopled playlist
         _this.timeout = setTimeout(function() {
-
           event.target.seekTo(0);
-
         }, (duration * 1000) - 100);
       }
     },
@@ -428,6 +434,7 @@ Site.Doodle = {
 
 Site.init();
 
+// Youtube player API triggers this function when ready
 function onYouTubeIframeAPIReady() {
   Site.Index.Video.APIReady();
 }
