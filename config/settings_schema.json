@@ -38,6 +38,12 @@
         "id": "front_background_video",
         "label": "Background video URL",
         "accept": ["youtube"]
+      },
+      {
+        "type": "checkbox",
+        "id": "front_background_video_mute",
+        "label": "Mute Video?",
+        "default": false
       }
     ]
   }, {
