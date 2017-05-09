@@ -393,14 +393,12 @@ Site.Doodle = {
   },
 
   getPathLength: function(el){
-    console.log('getPathLength');
     var pathCoords = el.get(0);
     var pathLength = pathCoords.getTotalLength();
     return pathLength;
   },
 
   drawPath: function(el) {
-    console.log('drawPath');
     var _this = this;
     var pathLength = _this.getPathLength(el);
 
