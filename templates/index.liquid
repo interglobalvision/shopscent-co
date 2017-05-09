@@ -20,22 +20,24 @@
 {% endif %}
 
 <section id="shop-collection" class="margin-bottom-large">
-  <div class="grid-row">
+  <div class="shop-container">
+    <div class="grid-row">
 
-    {% for product in collection.products %}
-    <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
-      <a href="{{ product.url }}" class="font-size-small">
-        <img class="js-tilt" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-        <h2>{{ product.title }}</h2>
-        <span>{{ product.price | money_without_trailing_zeros }}</span>
-      </a>
-    </div>
-    {% else %}
-    <div class="grid-item item-s-12">
-      <p>You have no products in your shop</p>
-    </div>
-    {% endfor %}
+      {% for product in collection.products %}
+      <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
+        <a href="{{ product.url }}" class="font-size-small">
+          <img class="js-tilt" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+          <h2>{{ product.title }}</h2>
+          <span>{{ product.price | money_without_trailing_zeros }}</span>
+        </a>
+      </div>
+      {% else %}
+      <div class="grid-item item-s-12">
+        <p>You have no products in your shop</p>
+      </div>
+      {% endfor %}
 
+    </div>
   </div>
 </section>
 
