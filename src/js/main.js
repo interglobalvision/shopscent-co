@@ -187,6 +187,10 @@ Site.Index = {
 
     onReady: function(event) {
       event.target.playVideo();
+
+      if ($('#front-splash').attr('data-mute')) {
+        event.target.mute();
+      }
     },
 
     onPlayerStateChange: function(event) {
