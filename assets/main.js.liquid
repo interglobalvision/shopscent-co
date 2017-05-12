@@ -186,6 +186,10 @@ Site.Index = {
     },
 
     onReady: function(event) {
+      if ($('#front-splash').attr('data-mute')) {
+        event.target.mute();
+      }
+      
       event.target.playVideo();
     },
 

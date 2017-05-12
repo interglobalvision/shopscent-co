@@ -5,7 +5,7 @@
 {% paginate collection.products by 12 %}
 
 {% if paginate.current_page == 1 %}
-<section id="front-splash">
+<section id="front-splash" data-mute="{{ settings.front_background_video_mute }}">
   {% unless settings.front_background_image == blank %}
     <div id="front-splash-image" style="background-image: url('{{ settings.front_background_image | img_url: '1920x' }}')"></div>
   {% endunless %}
@@ -20,7 +20,7 @@
 {% endif %}
 
 <section id="shop-collection" class="margin-bottom-large">
-  <div class="container">
+  <div class="shop-container">
     <div class="grid-row">
 
       {% for product in collection.products %}
