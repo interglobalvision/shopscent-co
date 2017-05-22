@@ -68,6 +68,12 @@
   <header id="header" class="font-bold padding-top-basic padding-bottom-basic {% if isIndex %}index-header{% endif %}">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
+      {% if pages.about == blank %}
+      <nav class="grid-row font-uppercase justify-between">
+        <div class="grid-item item-s-4">
+          <a href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
+        </div>
+      {% else %}
       <nav class="grid-row font-uppercase">
         <div class="grid-item item-s-4">
           <a href="/pages/about">About</a>
@@ -75,6 +81,7 @@
         <div class="grid-item item-s-4 text-align-center">
           <a href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
         </div>
+      {% endif %}
         <div class="grid-item item-s-4 text-align-right">
           <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}Cart</a>
         </div>
