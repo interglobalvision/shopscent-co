@@ -51,6 +51,10 @@
       color: {{ settings.accent_color }};
     }
 
+    #header a:focus svg {
+      fill: {{ settings.accent_color }};
+    }
+
     textarea:focus {
       box-shadow: 0 0 10px {{ settings.accent_color }};
     }
@@ -71,19 +75,19 @@
       {% if pages.about == blank %}
       <nav class="grid-row font-uppercase justify-between">
         <div class="grid-item item-s-4">
-          <a href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
+          <a class="nav-item" href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>{% include 'nav-shop.svg' %}</a>
         </div>
       {% else %}
       <nav class="grid-row font-uppercase">
         <div class="grid-item item-s-4">
-          <a href="/pages/about">About</a>
+          <a class="nav-item" href="/pages/about">{% include 'nav-about.svg' %}</a>
         </div>
         <div class="grid-item item-s-4 text-align-center">
-          <a href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>Shop</a>
+          <a class="nav-item" href="/{% unless isIndex %}#shop{% endunless %}" {% if isIndex %}class="js-scroll-to-shop"{% endif %}>{% include 'nav-shop.svg' %}</a>
         </div>
       {% endif %}
         <div class="grid-item item-s-4 text-align-right">
-          <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}Cart</a>
+          <a class="nav-item" href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count" class="font-size-small">{{ cart.item_count }}</span> {% endif %}{% include 'nav-cart.svg' %}</a>
         </div>
       </nav>
     </div>
