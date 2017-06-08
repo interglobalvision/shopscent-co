@@ -794,15 +794,44 @@ textarea {
   top: 0;
   left: 0;
   z-index: 400;
-  transition: color 300ms;
+}
+.nav-item {
+  display: inline-block;
+  color: #000;
+  transition: color 300ms, -webkit-transform 300ms;
+  transition: color 300ms, transform 300ms;
+  transition: color 300ms, transform 300ms, -webkit-transform 300ms;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+.nav-item:hover,
+.nav-item:focus {
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.nav-item svg {
+  height: 30px;
+  fill: #000;
+  transition: fill 300ms;
 }
 #nav-cart-count {
   vertical-align: middle;
 }
 #header.index-header {
   position: absolute;
+}
+#header.index-header .nav-item {
   color: #fff;
   will-change: color, top;
+}
+#header.index-header .nav-item svg {
+  fill: #fff;
+  will-change: fill;
 }
 #front-splash {
   position: absolute;

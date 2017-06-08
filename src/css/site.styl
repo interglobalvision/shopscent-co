@@ -102,7 +102,19 @@ textarea
   top: 0
   left: 0
   z-index: 400
-  transition: color 300ms
+
+.nav-item
+  display: inline-block
+  color: $color-black
+  transition: color 300ms, transform 300ms
+  transform: scale(1)
+  transform-origin: center
+  &:hover, &:focus
+    transform: scale(1.5)
+  svg
+    height: 30px
+    fill: $color-black
+    transition: fill 300ms
 
 #nav-cart-count
   vertical-align: middle
@@ -114,8 +126,12 @@ textarea
 #header
   &.index-header
     position: absolute
-    color: $color-white
-    will-change: color, top
+    .nav-item
+      color: $color-white
+      will-change: color, top
+      svg
+        fill: $color-white
+        will-change: fill
 
 #front-splash
   position: absolute
