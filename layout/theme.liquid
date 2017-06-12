@@ -8,9 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   {% if template == 'index' %}
-  <title>{{ shop.name }} | {{ page_title }}</title>
-  {% else if template == '404' %}
-  <title>Page Not Found | {{ shop.name }}</title>
+  <title>{{ shop.name }}</title>
   {% else %}
   <title>{{ page_title }} | {{ shop.name }}</title>
   {% endif %}
