@@ -99,12 +99,12 @@
     <div class="container">
       <div id="contact-links" class="grid-row">
         {% if settings.contact_email != blank %}
-        <div class="grid-item item-s-12 item-m-4 item-l-3 padding-bottom-micro">
+        <div class="grid-item item-s-12 item-m-4 padding-bottom-micro">
           <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
         </div>
         {% endif %}
         {% if settings.contact_instagram != blank %}
-        <div class="grid-item item-s-12 item-m-4 item-l-3 padding-bottom-tiny">
+        <div class="grid-item item-s-12 item-m-4 padding-bottom-tiny">
           <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
         </div>
         {% endif %}
